@@ -9,9 +9,9 @@ They have been tested with one example each of a SPaT and TIM message frame.
 Obviously more testing of other MessageFrame types is needed.
 
 ## Packages:
-* `main/j2735.*`: The generated classes.
-* `main/asn2pojo.runtime`: The runtime library containing base classes, custom serializers/deserializers and annotations.
-* `test/j2735/DSRC`: Unit tests
+* main: `j2735.*`: The generated classes.
+* main: `asn2pojo.runtime`: The runtime library containing base classes, custom serializers/deserializers and annotations.
+* test: `j2735/DSRC`: Unit tests
 
 ## Requires:
 * Java 21 JDK
