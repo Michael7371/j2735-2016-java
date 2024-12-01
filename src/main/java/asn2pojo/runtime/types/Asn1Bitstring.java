@@ -78,9 +78,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
         System.out.println(bytes.length);
         BitSet newBits = BitSet.valueOf(bytes);
         System.out.println(newBits);
-//        if (newBits.length() != size) {
-//            throw new IllegalArgumentException("Wrong number of bits in " + str);
-//        }
+
         bits.clear();
         bits.or(newBits);
         System.out.println(binaryString());

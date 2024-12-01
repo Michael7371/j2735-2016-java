@@ -43,38 +43,7 @@ public abstract class Asn1Choice implements Asn1Type {
     abstract protected List<Optional<Asn1Type>> listTypes();
 
 
-//    @Override
-//    public BitSet toUper() {
-//        if (!isValid()) {
-//            throw new RuntimeException("The CHOICE is not valid.  The number of chosen items is not 1.");
-//        }
-//
-//        List<Boolean> bits = new ArrayList<>();
-//
-//        if (hasExtensionMarker) {
-//            // Add the extension marker, which is always 0 because extensions are not supported
-//            bits.add(false);
-//        }
-//
-//        // Add the chosen index encoded as a constrained integer
-//        final int chosenIndex = chosenIndex();
-//        Asn1Integer index = new Asn1Integer(0, maxIndex());
-//        index.setValue(chosenIndex);
-//        BitSet uperIndex = index.toUper();
-//        appendBits(bits, uperIndex);
-//
-//        // Add the chosen field
-//        var types = listTypes();
-//        BitSet chosen = types.get(chosenIndex).get().toUper();
-//        appendBits(bits, chosen);
-//
-//        return getBitSet(bits);
-//    }
 
-//    @Override
-//    public BitSet fromUper(BitSet bits) {
-//        return null;
-//    }
 
     @Override
     public String toString() {

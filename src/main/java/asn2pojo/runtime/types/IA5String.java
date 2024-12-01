@@ -11,13 +11,5 @@ public class IA5String extends Asn1CharacterString {
         super(minLength, maxLength);
     }
 
-//    @Override
-//    public BitSet toUper() {
-//        return null;
-//    }
-//
-//    @Override
-//    public BitSet fromUper(BitSet bits) {
-//        return null;
-//    }
+
 }
