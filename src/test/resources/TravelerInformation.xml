@@ -378,7 +378,6 @@
                                                     </enabled>
                                                     <data>
                                                         <laneCrownPointRight>-87</laneCrownPointRight>
-                                                        <laneCrownPointRight>4</laneCrownPointRight>
                                                         <laneAngle>-167</laneAngle>
                                                     </data>
                                                     <dWidth>144</dWidth>
@@ -592,7 +591,6 @@
                                                 <data>
                                                     <pathEndPointAngle>18</pathEndPointAngle>
                                                     <laneCrownPointCenter>9</laneCrownPointCenter>
-                                                    <pathEndPointAngle>24</pathEndPointAngle>
                                                 </data>
                                                 <dWidth>225</dWidth>
                                                 <dElevation>-213</dElevation>

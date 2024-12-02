@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 
 public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL> {
 
@@ -21,12 +21,44 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
     }
 
     @Test
-    public void xmlDeserialize_enumListsAndIntsOnly() throws IOException {
-        NodeAttributeSetLL obj = fromXml(xml_enumsListsAndIntsOnly);
+    public void xmlDeserialize_integerProperties() throws IOException {
+        NodeAttributeSetLL obj = fromXml(xml_IntegersOnly);
         assertThat(obj, notNullValue());
+        assertThat(obj.getDWidth(), equalTo(162L));
+        assertThat(obj.getDElevation(), equalTo(424));
     }
 
+    @Test
+    public void xmlDeserialize_enumListsOnly() throws IOException {
+        NodeAttributeSetLL obj = fromXml(xml_enumListsOnly);
+        assertThat(obj, notNullValue());
+        assertThat(obj.getLocalNode(), hasSize(2));
+        assertThat(obj.getDisabled(), hasSize(5));
+        assertThat(obj.getEnabled(), hasSize(4));
+    }
 
+    @Test
+    public void xmlDeserialize_laneAttributeIntData() throws IOException {
+        NodeAttributeSetLL obj = fromXml(xml_laneAttributeIntData);
+        assertThat(obj, notNullValue());
+        // TODO Inspect that all data items are present
+    }
+
+    @Test
+    public void xmlSerialize() throws IOException {
+        NodeAttributeSetLL nasll = new NodeAttributeSetLL();
+        LaneDataAttributeList ldal = new LaneDataAttributeList();
+        LaneDataAttribute lda1 = new LaneDataAttribute();
+        lda1.setLaneAngle(new MergeDivergeNodeAngle(101L));
+        ldal.add(lda1);
+        LaneDataAttribute lda2 = new LaneDataAttribute();
+        lda2.setPathEndPointAngle(new DeltaAngle(-8L));
+        ldal.add(lda2);
+        nasll.setData(ldal);
+        String xml = toXml(nasll);
+        assertThat(xml, notNullValue());
+        // TODO Inspect output for absence of <data> element.
+    }
 
     public static final String xml = """
         <NodeAttributeSetLL>
@@ -72,7 +104,18 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
         </NodeAttributeSetLL>
         """;
 
-    public static final String xml_enumsListsAndIntsOnly = """
+    public static final String xml_laneAttributeIntData = """
+        <NodeAttributeSetLL>
+            <data>
+                <laneCrownPointRight>-87</laneCrownPointRight>
+                <laneAngle>-167</laneAngle>
+            </data>
+        </NodeAttributeSetLL>
+        """;
+
+
+
+    public static final String xml_enumListsOnly = """
         <NodeAttributeSetLL>
             <localNode>
                 <downstreamStopLine/>
@@ -91,6 +134,11 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
                 <taperToCenterLine/>
                 <lowCurbsPresent/>
             </enabled>
+        </NodeAttributeSetLL>
+        """;
+
+    public static final String xml_IntegersOnly = """
+        <NodeAttributeSetLL>
             <dWidth>162</dWidth>
             <dElevation>424</dElevation>
         </NodeAttributeSetLL>

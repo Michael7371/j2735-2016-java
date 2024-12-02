@@ -31,4 +31,6 @@ public class Offset_B10 extends Asn1Integer {
 		this();
 		this.value = value;
 	}
+
+
 }

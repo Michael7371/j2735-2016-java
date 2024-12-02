@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import j2735.REGION.Reg_NodeAttributeSetLL;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 
@@ -30,12 +32,16 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 public class NodeAttributeSetLL extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JacksonXmlElementWrapper(useWrapping = false)
 	private NodeAttributeLLList localNode;
 	@Asn1Property(tag = 1, optional = true)
+	@JacksonXmlElementWrapper(useWrapping = false)
 	private SegmentAttributeLLList disabled;
 	@Asn1Property(tag = 2, optional = true)
+	@JacksonXmlElementWrapper(useWrapping = false)
 	private SegmentAttributeLLList enabled;
 	@Asn1Property(tag = 3, optional = true)
+	@JacksonXmlElementWrapper(useWrapping = false)
 	private LaneDataAttributeList data;
 	@Asn1Property(tag = 4, optional = true)
 	private Offset_B10 dWidth;
