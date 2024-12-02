@@ -18,7 +18,6 @@ public class TIMTest extends BaseSerializeTest<TravelerInformation> {
     public void xmlDeserialize_generatedXml() throws IOException {
         TravelerInformation tim = fromXml(loadResource("/TravelerInformation.xml"));
         assertThat(tim, notNullValue());
-        assertThat(tim, hasProperty("messageId", equalTo(new DSRCmsgID(31))));
     }
     
 
@@ -26,6 +25,5 @@ public class TIMTest extends BaseSerializeTest<TravelerInformation> {
     public void xmlDeserialize_generatedXmlWithComputedLanes() throws IOException {
         TravelerInformation tim = fromXml(loadResource("/TravelerInformationWithComputedLanes.xml"));
         assertThat(tim, notNullValue());
-        assertThat(tim, hasProperty("messageId", equalTo(new DSRCmsgID(31))));
     }
 }

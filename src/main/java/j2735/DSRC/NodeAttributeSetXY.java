@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import j2735.REGION.Reg_NodeAttributeSetXY;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 
@@ -30,16 +32,22 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 public class NodeAttributeSetXY extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = NodeAttributeXYList.NodeAttributeXYListDeserializer.class)
 	private NodeAttributeXYList localNode;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = SegmentAttributeXYList.SegmentAttributeXYListDeserializer.class)
 	private SegmentAttributeXYList disabled;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = SegmentAttributeXYList.SegmentAttributeXYListDeserializer.class)
 	private SegmentAttributeXYList enabled;
 	@Asn1Property(tag = 3, optional = true)
+	@JacksonXmlElementWrapper(useWrapping = false)
 	private LaneDataAttributeList data;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = Offset_B10.Offset_B10Deserializer.class)
 	private Offset_B10 dWidth;
 	@Asn1Property(tag = 5, optional = true)
+	@JsonDeserialize(using = Offset_B10.Offset_B10Deserializer.class)
 	private Offset_B10 dElevation;
 	@Asn1Property(tag = 6, optional = true)
 	private SequenceOfRegional regional;

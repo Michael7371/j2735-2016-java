@@ -1,5 +1,6 @@
 package j2735.DSRC;
 
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
@@ -30,5 +31,17 @@ public class DeltaAngle extends Asn1Integer {
 	public DeltaAngle(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class DeltaAngleDeserializer extends IntegerDeserializer<DeltaAngle> {
+
+		protected DeltaAngleDeserializer() {
+			super(DeltaAngle.class);
+		}
+
+		@Override
+		protected DeltaAngle construct() {
+			return new DeltaAngle();
+		}
 	}
 }

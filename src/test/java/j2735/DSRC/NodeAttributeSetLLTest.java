@@ -24,8 +24,10 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
     public void xmlDeserialize_integerProperties() throws IOException {
         NodeAttributeSetLL obj = fromXml(xml_IntegersOnly);
         assertThat(obj, notNullValue());
-        assertThat(obj.getDWidth(), equalTo(162L));
-        assertThat(obj.getDElevation(), equalTo(424));
+        assertThat(obj.getDWidth(), notNullValue());
+        assertThat(obj.getDWidth().getValue(), equalTo(162L));
+        assertThat(obj.getDElevation(), notNullValue());
+        assertThat(obj.getDElevation().getValue(), equalTo(424L));
     }
 
     @Test

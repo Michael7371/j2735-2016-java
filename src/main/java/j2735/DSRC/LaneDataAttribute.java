@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import j2735.REGION.Reg_LaneDataAttribute;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import java.util.Optional;
@@ -33,14 +34,19 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 public class LaneDataAttribute extends Asn1Choice {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = DeltaAngle.DeltaAngleDeserializer.class)
 	private DeltaAngle pathEndPointAngle;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = RoadwayCrownAngle.RoadwayCrownAngleDeserializer.class)
 	private RoadwayCrownAngle laneCrownPointCenter;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = RoadwayCrownAngle.RoadwayCrownAngleDeserializer.class)
 	private RoadwayCrownAngle laneCrownPointLeft;
 	@Asn1Property(tag = 3)
+	@JsonDeserialize(using = RoadwayCrownAngle.RoadwayCrownAngleDeserializer.class)
 	private RoadwayCrownAngle laneCrownPointRight;
 	@Asn1Property(tag = 4)
+	@JsonDeserialize(using = MergeDivergeNodeAngle.MergeDivergeNodeAngleDeserializer.class)
 	private MergeDivergeNodeAngle laneAngle;
 	@Asn1Property(tag = 5)
 	@JacksonXmlElementWrapper(localName = "speedLimits")
