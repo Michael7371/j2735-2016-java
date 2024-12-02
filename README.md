@@ -5,7 +5,7 @@ to/from standard XER and JER using only Jackson ObjectMapper and XmlMapper.
 
 The classes were generated from the 2016 edition of the J2735 specification using a new ASN.1 compiler for Java.
 
-They have been tested with one example each of a SPaT and TIM message frame.
+The unit tests include one example of a SPaT and two TIM messages, and related data frames.
 Obviously more testing of other MessageFrame types is needed.
 
 ## Packages:
