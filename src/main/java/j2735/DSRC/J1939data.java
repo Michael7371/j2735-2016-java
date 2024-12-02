@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -38,20 +39,28 @@ public class J1939data extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "AxleWeightSet")
 	private AxleWeightList axles;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = TrailerWeight.TrailerWeightDeserializer.class)
 	private TrailerWeight trailerWeight;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = CargoWeight.CargoWeightDeserializer.class)
 	private CargoWeight cargoWeight;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = SteeringAxleTemperature.SteeringAxleTemperatureDeserializer.class)
 	private SteeringAxleTemperature steeringAxleTemperature;
 	@Asn1Property(tag = 5, optional = true)
+	@JsonDeserialize(using = DriveAxleLocation.DriveAxleLocationDeserializer.class)
 	private DriveAxleLocation driveAxleLocation;
 	@Asn1Property(tag = 6, optional = true)
+	@JsonDeserialize(using = DriveAxleLiftAirPressure.DriveAxleLiftAirPressureDeserializer.class)
 	private DriveAxleLiftAirPressure driveAxleLiftAirPressure;
 	@Asn1Property(tag = 7, optional = true)
+	@JsonDeserialize(using = DriveAxleTemperature.DriveAxleTemperatureDeserializer.class)
 	private DriveAxleTemperature driveAxleTemperature;
 	@Asn1Property(tag = 8, optional = true)
+	@JsonDeserialize(using = DriveAxleLubePressure.DriveAxleLubePressureDeserializer.class)
 	private DriveAxleLubePressure driveAxleLubePressure;
 	@Asn1Property(tag = 9, optional = true)
+	@JsonDeserialize(using = SteeringAxleLubePressure.SteeringAxleLubePressureDeserializer.class)
 	private SteeringAxleLubePressure steeringAxleLubePressure;
 
 	public TireDataList getTires() {

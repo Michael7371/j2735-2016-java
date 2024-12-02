@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,8 +29,10 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class AxleWeightSet extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = AxleLocation.AxleLocationDeserializer.class)
 	private AxleLocation location;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = AxleWeight.AxleWeightDeserializer.class)
 	private AxleWeight weight;
 
 	public AxleLocation getLocation() {

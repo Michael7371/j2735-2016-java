@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.ITIS.ITIScodes;
 import j2735.ITIS.GenericLocations;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,10 +31,12 @@ import j2735.ITIS.GenericLocations;
 public class ObstacleDetection extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = ObstacleDistance.ObstacleDistanceDeserializer.class)
 	private ObstacleDistance obDist;
 	@Asn1Property(tag = 1)
 	private ObstacleDirection obDirect;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = ITIScodes.ITIScodesDeserializer.class)
 	private ITIScodes description;
 	@Asn1Property(tag = 3, optional = true)
 	private GenericLocations locationDetails;

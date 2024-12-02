@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,8 +29,10 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class Node_XY_32b extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = Offset_B16.Offset_B16Deserializer.class)
 	private Offset_B16 x;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = Offset_B16.Offset_B16Deserializer.class)
 	private Offset_B16 y;
 
 	public Offset_B16 getX() {

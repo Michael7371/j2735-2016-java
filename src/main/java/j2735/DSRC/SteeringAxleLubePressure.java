@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class SteeringAxleLubePressure extends Asn1Integer {
 	public SteeringAxleLubePressure(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class SteeringAxleLubePressureDeserializer extends IntegerDeserializer<SteeringAxleLubePressure> {
+		public SteeringAxleLubePressureDeserializer() {
+			super(SteeringAxleLubePressure.class);
+		}
+
+		@Override
+		protected SteeringAxleLubePressure construct() {
+			return new SteeringAxleLubePressure();
+		}
 	}
 }

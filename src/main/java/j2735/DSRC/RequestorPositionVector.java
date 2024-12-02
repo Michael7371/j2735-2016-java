@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,6 +31,7 @@ public class RequestorPositionVector extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private Position3D position;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = Angle.AngleDeserializer.class)
 	private Angle heading;
 	@Asn1Property(tag = 2, optional = true)
 	private TransmissionAndSpeed speed;

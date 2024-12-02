@@ -11,8 +11,8 @@ import java.util.Optional;
 import asn2pojo.runtime.types.Asn1Type;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import j2735.ITIS.ITIScodesAndText;
-import asn2pojo.runtime.serialization.NestedSequenceOfDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import asn2pojo.runtime.serialization.NestedSequenceOfDeserializer;
 import asn2pojo.runtime.serialization.NestedSequenceOfSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -38,26 +38,34 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class TravelerDataFrame extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = SSPindex.SSPindexDeserializer.class)
 	private SSPindex sspTimRights;
 	@Asn1Property(tag = 1)
 	private TravelerInfoType frameType;
 	@Asn1Property(tag = 2)
 	private MsgIdChoice msgId;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = DYear.DYearDeserializer.class)
 	private DYear startYear;
 	@Asn1Property(tag = 4)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear startTime;
 	@Asn1Property(tag = 5)
+	@JsonDeserialize(using = MinutesDuration.MinutesDurationDeserializer.class)
 	private MinutesDuration duratonTime;
 	@Asn1Property(tag = 6)
+	@JsonDeserialize(using = SignPrority.SignProrityDeserializer.class)
 	private SignPrority priority;
 	@Asn1Property(tag = 7)
+	@JsonDeserialize(using = SSPindex.SSPindexDeserializer.class)
 	private SSPindex sspLocationRights;
 	@Asn1Property(tag = 8)
 	private SequenceOfRegions regions;
 	@Asn1Property(tag = 9)
+	@JsonDeserialize(using = SSPindex.SSPindexDeserializer.class)
 	private SSPindex sspMsgRights1;
 	@Asn1Property(tag = 10)
+	@JsonDeserialize(using = SSPindex.SSPindexDeserializer.class)
 	private SSPindex sspMsgRights2;
 	@Asn1Property(tag = 11)
 	private ContentChoice content;

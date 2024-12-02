@@ -11,6 +11,7 @@ import java.util.Optional;
 import asn2pojo.runtime.types.Asn1Type;
 import j2735.REGION.Reg_ComputedLane;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -34,16 +35,20 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 public class ComputedLane extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = LaneID.LaneIDDeserializer.class)
 	private LaneID referenceLaneId;
 	@Asn1Property(tag = 1)
 	private OffsetXaxisChoice offsetXaxis;
 	@Asn1Property(tag = 2)
 	private OffsetYaxisChoice offsetYaxis;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = Angle.AngleDeserializer.class)
 	private Angle rotateXY;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = Scale_B12.Scale_B12Deserializer.class)
 	private Scale_B12 scaleXaxis;
 	@Asn1Property(tag = 5, optional = true)
+	@JsonDeserialize(using = Scale_B12.Scale_B12Deserializer.class)
 	private Scale_B12 scaleYaxis;
 	@Asn1Property(tag = 6, optional = true)
 	private SequenceOfRegional regional;
@@ -59,8 +64,10 @@ public class ComputedLane extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class OffsetXaxisChoice extends Asn1Choice {
 		@Asn1Property(tag = 0)
+		@JsonDeserialize(using = DrivenLineOffsetSm.DrivenLineOffsetSmDeserializer.class)
 		private DrivenLineOffsetSm small;
 		@Asn1Property(tag = 1)
+		@JsonDeserialize(using = DrivenLineOffsetLg.DrivenLineOffsetLgDeserializer.class)
 		private DrivenLineOffsetLg large;
 
 		OffsetXaxisChoice() {
@@ -100,8 +107,10 @@ public class ComputedLane extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class OffsetYaxisChoice extends Asn1Choice {
 		@Asn1Property(tag = 0)
+		@JsonDeserialize(using = DrivenLineOffsetSm.DrivenLineOffsetSmDeserializer.class)
 		private DrivenLineOffsetSm small;
 		@Asn1Property(tag = 1)
+		@JsonDeserialize(using = DrivenLineOffsetLg.DrivenLineOffsetLgDeserializer.class)
 		private DrivenLineOffsetLg large;
 
 		OffsetYaxisChoice() {

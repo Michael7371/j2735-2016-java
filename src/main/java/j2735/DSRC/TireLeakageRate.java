@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class TireLeakageRate extends Asn1Integer {
 	public TireLeakageRate(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class TireLeakageRateDeserializer extends IntegerDeserializer<TireLeakageRate> {
+		public TireLeakageRateDeserializer() {
+			super(TireLeakageRate.class);
+		}
+
+		@Override
+		protected TireLeakageRate construct() {
+			return new TireLeakageRate();
+		}
 	}
 }

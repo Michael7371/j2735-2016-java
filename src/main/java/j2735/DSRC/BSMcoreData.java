@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -29,27 +30,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BSMcoreData extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = MsgCount.MsgCountDeserializer.class)
 	private MsgCount msgCnt;
 	@Asn1Property(tag = 1)
 	private TemporaryID id;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = DSecond.DSecondDeserializer.class)
 	private DSecond secMark;
 	@Asn1Property(tag = 3)
+	@JsonDeserialize(using = Latitude.LatitudeDeserializer.class)
 	private Latitude lat;
 	@Asn1Property(tag = 4, name = "long")
 	@JsonProperty("long")
+	@JsonDeserialize(using = Longitude.LongitudeDeserializer.class)
 	private Longitude long_;
 	@Asn1Property(tag = 5)
+	@JsonDeserialize(using = Elevation.ElevationDeserializer.class)
 	private Elevation elev;
 	@Asn1Property(tag = 6)
 	private PositionalAccuracy accuracy;
 	@Asn1Property(tag = 7)
 	private TransmissionState transmission;
 	@Asn1Property(tag = 8)
+	@JsonDeserialize(using = Speed.SpeedDeserializer.class)
 	private Speed speed;
 	@Asn1Property(tag = 9)
+	@JsonDeserialize(using = Heading.HeadingDeserializer.class)
 	private Heading heading;
 	@Asn1Property(tag = 10)
+	@JsonDeserialize(using = SteeringWheelAngle.SteeringWheelAngleDeserializer.class)
 	private SteeringWheelAngle angle;
 	@Asn1Property(tag = 11)
 	private AccelerationSet4Way accelSet;

@@ -2,6 +2,7 @@ package j2735.AddGrpB;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class DegreesLat extends Asn1Integer {
 	public DegreesLat(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class DegreesLatDeserializer extends IntegerDeserializer<DegreesLat> {
+		public DegreesLatDeserializer() {
+			super(DegreesLat.class);
+		}
+
+		@Override
+		protected DegreesLat construct() {
+			return new DegreesLat();
+		}
 	}
 }

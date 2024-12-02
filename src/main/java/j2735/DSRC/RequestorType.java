@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_RequestorType;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -35,6 +36,7 @@ public class RequestorType extends Asn1Sequence {
 	@Asn1Property(tag = 2, optional = true)
 	private RequestImportanceLevel request;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = Iso3833VehicleType.Iso3833VehicleTypeDeserializer.class)
 	private Iso3833VehicleType iso3883;
 	@Asn1Property(tag = 4, optional = true)
 	private VehicleType hpmsType;

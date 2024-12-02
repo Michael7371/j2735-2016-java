@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class SteeringWheelAngle extends Asn1Integer {
 	public SteeringWheelAngle(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class SteeringWheelAngleDeserializer extends IntegerDeserializer<SteeringWheelAngle> {
+		public SteeringWheelAngleDeserializer() {
+			super(SteeringWheelAngle.class);
+		}
+
+		@Override
+		protected SteeringWheelAngle construct() {
+			return new SteeringWheelAngle();
+		}
 	}
 }

@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class SecondOfTime extends Asn1Integer {
 	public SecondOfTime(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class SecondOfTimeDeserializer extends IntegerDeserializer<SecondOfTime> {
+		public SecondOfTimeDeserializer() {
+			super(SecondOfTime.class);
+		}
+
+		@Override
+		protected SecondOfTime construct() {
+			return new SecondOfTime();
+		}
 	}
 }

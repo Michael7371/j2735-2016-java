@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class SunSensor extends Asn1Integer {
 	public SunSensor(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class SunSensorDeserializer extends IntegerDeserializer<SunSensor> {
+		public SunSensorDeserializer() {
+			super(SunSensor.class);
+		}
+
+		@Override
+		protected SunSensor construct() {
+			return new SunSensor();
+		}
 	}
 }

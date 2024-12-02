@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -38,14 +39,18 @@ public class VehicleStatus extends Asn1Sequence {
 	@Asn1Property(tag = 4, optional = true)
 	private BrakeAppliedPressure brakePressure;
 	@Asn1Property(tag = 5, optional = true)
+	@JsonDeserialize(using = CoefficientOfFriction.CoefficientOfFrictionDeserializer.class)
 	private CoefficientOfFriction roadFriction;
 	@Asn1Property(tag = 6, optional = true)
+	@JsonDeserialize(using = SunSensor.SunSensorDeserializer.class)
 	private SunSensor sunData;
 	@Asn1Property(tag = 7, optional = true)
 	private RainSensor rainData;
 	@Asn1Property(tag = 8, optional = true)
+	@JsonDeserialize(using = AmbientAirTemperature.AmbientAirTemperatureDeserializer.class)
 	private AmbientAirTemperature airTemp;
 	@Asn1Property(tag = 9, optional = true)
+	@JsonDeserialize(using = AmbientAirPressure.AmbientAirPressureDeserializer.class)
 	private AmbientAirPressure airPres;
 	@Asn1Property(tag = 10, optional = true)
 	private Asn1Sequence steering;
@@ -56,6 +61,7 @@ public class VehicleStatus extends Asn1Sequence {
 	@Asn1Property(tag = 13, optional = true)
 	private FullPositionVector fullPos;
 	@Asn1Property(tag = 14, optional = true)
+	@JsonDeserialize(using = ThrottlePosition.ThrottlePositionDeserializer.class)
 	private ThrottlePosition throttlePos;
 	@Asn1Property(tag = 15, optional = true)
 	private SpeedandHeadingandThrottleConfidence speedHeadC;

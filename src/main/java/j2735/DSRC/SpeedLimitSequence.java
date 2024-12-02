@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import asn2pojo.runtime.types.Asn1Type;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -38,6 +39,7 @@ public class SpeedLimitSequence extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class ItemChoice extends Asn1Choice {
 		@Asn1Property(tag = 0)
+		@JsonDeserialize(using = ITIScodes.ITIScodesDeserializer.class)
 		private ITIScodes itis;
 		@Asn1Property(tag = 1)
 		private ITIStextPhrase text;

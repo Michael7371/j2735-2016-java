@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class SSPindex extends Asn1Integer {
 	public SSPindex(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class SSPindexDeserializer extends IntegerDeserializer<SSPindex> {
+		public SSPindexDeserializer() {
+			super(SSPindex.class);
+		}
+
+		@Override
+		protected SSPindex construct() {
+			return new SSPindex();
+		}
 	}
 }

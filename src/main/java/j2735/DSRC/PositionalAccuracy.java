@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,10 +29,13 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class PositionalAccuracy extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = SemiMajorAxisAccuracy.SemiMajorAxisAccuracyDeserializer.class)
 	private SemiMajorAxisAccuracy semiMajor;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = SemiMinorAxisAccuracy.SemiMinorAxisAccuracyDeserializer.class)
 	private SemiMinorAxisAccuracy semiMinor;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = SemiMajorAxisOrientation.SemiMajorAxisOrientationDeserializer.class)
 	private SemiMajorAxisOrientation orientation;
 
 	public SemiMajorAxisAccuracy getSemiMajor() {

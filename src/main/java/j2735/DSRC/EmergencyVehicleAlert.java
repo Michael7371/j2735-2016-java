@@ -10,6 +10,7 @@ import j2735.ITIS.IncidentResponseEquipment;
 import j2735.ITIS.ResponderGroupAffected;
 import j2735.REGION.Reg_EmergencyVehicleAlert;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -33,6 +34,7 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 public class EmergencyVehicleAlert extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear timeStamp;
 	@Asn1Property(tag = 1, optional = true)
 	private TemporaryID id;
@@ -43,6 +45,7 @@ public class EmergencyVehicleAlert extends Asn1Sequence {
 	@Asn1Property(tag = 4, optional = true)
 	private EmergencyDetails details;
 	@Asn1Property(tag = 5, optional = true)
+	@JsonDeserialize(using = VehicleMass.VehicleMassDeserializer.class)
 	private VehicleMass mass;
 	@Asn1Property(tag = 6, optional = true)
 	private VehicleType basicType;

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,12 +29,16 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class SnapshotTime extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = GrossSpeed.GrossSpeedDeserializer.class)
 	private GrossSpeed speed1;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = SecondOfTime.SecondOfTimeDeserializer.class)
 	private SecondOfTime time1;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = GrossSpeed.GrossSpeedDeserializer.class)
 	private GrossSpeed speed2;
 	@Asn1Property(tag = 3)
+	@JsonDeserialize(using = SecondOfTime.SecondOfTimeDeserializer.class)
 	private SecondOfTime time2;
 
 	public GrossSpeed getSpeed1() {

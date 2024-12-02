@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,10 +29,13 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class RegionOffsets extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = OffsetLL_B16.OffsetLL_B16Deserializer.class)
 	private OffsetLL_B16 xOffset;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = OffsetLL_B16.OffsetLL_B16Deserializer.class)
 	private OffsetLL_B16 yOffset;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = OffsetLL_B16.OffsetLL_B16Deserializer.class)
 	private OffsetLL_B16 zOffset;
 
 	public OffsetLL_B16 getXOffset() {

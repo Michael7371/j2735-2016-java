@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,6 +31,7 @@ public class ShapePointSet extends Asn1Sequence {
 	@Asn1Property(tag = 0, optional = true)
 	private Position3D anchor;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = LaneWidth.LaneWidthDeserializer.class)
 	private LaneWidth laneWidth;
 	@Asn1Property(tag = 2, optional = true)
 	private DirectionOfUse directionality;

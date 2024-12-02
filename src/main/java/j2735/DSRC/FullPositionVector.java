@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -32,12 +33,16 @@ public class FullPositionVector extends Asn1Sequence {
 	private DDateTime utcTime;
 	@Asn1Property(tag = 1, name = "long")
 	@JsonProperty("long")
+	@JsonDeserialize(using = Longitude.LongitudeDeserializer.class)
 	private Longitude long_;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = Latitude.LatitudeDeserializer.class)
 	private Latitude lat;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = Elevation.ElevationDeserializer.class)
 	private Elevation elevation;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = Heading.HeadingDeserializer.class)
 	private Heading heading;
 	@Asn1Property(tag = 5, optional = true)
 	private TransmissionAndSpeed speed;

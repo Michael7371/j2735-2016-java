@@ -2,6 +2,7 @@ package j2735.AddGrpB;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class Elevation extends Asn1Integer {
 	public Elevation(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class ElevationDeserializer extends IntegerDeserializer<Elevation> {
+		public ElevationDeserializer() {
+			super(Elevation.class);
+		}
+
+		@Override
+		protected Elevation construct() {
+			return new Elevation();
+		}
 	}
 }

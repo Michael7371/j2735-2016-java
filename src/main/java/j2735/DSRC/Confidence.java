@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class Confidence extends Asn1Integer {
 	public Confidence(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class ConfidenceDeserializer extends IntegerDeserializer<Confidence> {
+		public ConfidenceDeserializer() {
+			super(Confidence.class);
+		}
+
+		@Override
+		protected Confidence construct() {
+			return new Confidence();
+		}
 	}
 }

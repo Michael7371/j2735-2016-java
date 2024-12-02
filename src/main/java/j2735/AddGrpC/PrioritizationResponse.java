@@ -8,6 +8,7 @@ import j2735.DSRC.StationID;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.DSRC.PrioritizationResponseStatus;
 import j2735.DSRC.SignalGroupID;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -31,10 +32,12 @@ import j2735.DSRC.SignalGroupID;
 public class PrioritizationResponse extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = StationID.StationIDDeserializer.class)
 	private StationID stationID;
 	@Asn1Property(tag = 1)
 	private PrioritizationResponseStatus priorState;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = SignalGroupID.SignalGroupIDDeserializer.class)
 	private SignalGroupID signalGroup;
 
 	public StationID getStationID() {

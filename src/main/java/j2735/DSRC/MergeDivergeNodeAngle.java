@@ -1,8 +1,8 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.serialization.IntegerDeserializer;
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -34,8 +34,7 @@ public class MergeDivergeNodeAngle extends Asn1Integer {
 	}
 
 	public static class MergeDivergeNodeAngleDeserializer extends IntegerDeserializer<MergeDivergeNodeAngle> {
-
-		protected MergeDivergeNodeAngleDeserializer() {
+		public MergeDivergeNodeAngleDeserializer() {
 			super(MergeDivergeNodeAngle.class);
 		}
 

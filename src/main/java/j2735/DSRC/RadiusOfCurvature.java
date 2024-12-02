@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class RadiusOfCurvature extends Asn1Integer {
 	public RadiusOfCurvature(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class RadiusOfCurvatureDeserializer extends IntegerDeserializer<RadiusOfCurvature> {
+		public RadiusOfCurvatureDeserializer() {
+			super(RadiusOfCurvature.class);
+		}
+
+		@Override
+		protected RadiusOfCurvature construct() {
+			return new RadiusOfCurvature();
+		}
 	}
 }

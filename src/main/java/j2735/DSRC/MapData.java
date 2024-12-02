@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_MapData;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -32,12 +33,15 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 public class MapData extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear timeStamp;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = MsgCount.MsgCountDeserializer.class)
 	private MsgCount msgIssueRevision;
 	@Asn1Property(tag = 2, optional = true)
 	private LayerType layerType;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = LayerID.LayerIDDeserializer.class)
 	private LayerID layerID;
 	@Asn1Property(tag = 4, optional = true)
 	@JacksonXmlElementWrapper(localName = "intersections")

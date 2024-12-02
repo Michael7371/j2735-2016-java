@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class Iso3833VehicleType extends Asn1Integer {
 	public Iso3833VehicleType(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class Iso3833VehicleTypeDeserializer extends IntegerDeserializer<Iso3833VehicleType> {
+		public Iso3833VehicleTypeDeserializer() {
+			super(Iso3833VehicleType.class);
+		}
+
+		@Override
+		protected Iso3833VehicleType construct() {
+			return new Iso3833VehicleType();
+		}
 	}
 }

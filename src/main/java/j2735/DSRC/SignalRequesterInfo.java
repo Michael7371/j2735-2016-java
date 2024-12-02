@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,8 +31,10 @@ public class SignalRequesterInfo extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private VehicleID id;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = RequestID.RequestIDDeserializer.class)
 	private RequestID request;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = MsgCount.MsgCountDeserializer.class)
 	private MsgCount sequenceNumber;
 	@Asn1Property(tag = 3, optional = true)
 	private BasicVehicleRole role;

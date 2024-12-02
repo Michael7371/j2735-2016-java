@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,14 +29,19 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class DFullTime extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = DYear.DYearDeserializer.class)
 	private DYear year;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = DMonth.DMonthDeserializer.class)
 	private DMonth month;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = DDay.DDayDeserializer.class)
 	private DDay day;
 	@Asn1Property(tag = 3)
+	@JsonDeserialize(using = DHour.DHourDeserializer.class)
 	private DHour hour;
 	@Asn1Property(tag = 4)
+	@JsonDeserialize(using = DMinute.DMinuteDeserializer.class)
 	private DMinute minute;
 
 	public DYear getYear() {

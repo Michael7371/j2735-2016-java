@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class CargoWeight extends Asn1Integer {
 	public CargoWeight(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class CargoWeightDeserializer extends IntegerDeserializer<CargoWeight> {
+		public CargoWeightDeserializer() {
+			super(CargoWeight.class);
+		}
+
+		@Override
+		protected CargoWeight construct() {
+			return new CargoWeight();
+		}
 	}
 }

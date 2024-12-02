@@ -2,6 +2,7 @@ package j2735.AddGrpB;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class MinutesAngle extends Asn1Integer {
 	public MinutesAngle(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class MinutesAngleDeserializer extends IntegerDeserializer<MinutesAngle> {
+		public MinutesAngleDeserializer() {
+			super(MinutesAngle.class);
+		}
+
+		@Override
+		protected MinutesAngle construct() {
+			return new MinutesAngle();
+		}
 	}
 }

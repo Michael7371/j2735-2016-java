@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class CoefficientOfFriction extends Asn1Integer {
 	public CoefficientOfFriction(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class CoefficientOfFrictionDeserializer extends IntegerDeserializer<CoefficientOfFriction> {
+		public CoefficientOfFrictionDeserializer() {
+			super(CoefficientOfFriction.class);
+		}
+
+		@Override
+		protected CoefficientOfFriction construct() {
+			return new CoefficientOfFriction();
+		}
 	}
 }

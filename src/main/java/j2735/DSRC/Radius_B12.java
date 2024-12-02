@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class Radius_B12 extends Asn1Integer {
 	public Radius_B12(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class Radius_B12Deserializer extends IntegerDeserializer<Radius_B12> {
+		public Radius_B12Deserializer() {
+			super(Radius_B12.class);
+		}
+
+		@Override
+		protected Radius_B12 construct() {
+			return new Radius_B12();
+		}
 	}
 }

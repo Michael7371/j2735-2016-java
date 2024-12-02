@@ -10,6 +10,7 @@ import j2735.NTCIP.EssPrecipRate;
 import j2735.NTCIP.EssPrecipSituation;
 import j2735.NTCIP.EssSolarRadiation;
 import j2735.NTCIP.EssMobileFriction;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -35,14 +36,18 @@ public class WeatherReport extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private EssPrecipYesNo isRaining;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = EssPrecipRate.EssPrecipRateDeserializer.class)
 	private EssPrecipRate rainRate;
 	@Asn1Property(tag = 2, optional = true)
 	private EssPrecipSituation precipSituation;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = EssSolarRadiation.EssSolarRadiationDeserializer.class)
 	private EssSolarRadiation solarRadiation;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = EssMobileFriction.EssMobileFrictionDeserializer.class)
 	private EssMobileFriction friction;
 	@Asn1Property(tag = 5, optional = true)
+	@JsonDeserialize(using = CoefficientOfFriction.CoefficientOfFrictionDeserializer.class)
 	private CoefficientOfFriction roadFriction;
 
 	public EssPrecipYesNo getIsRaining() {

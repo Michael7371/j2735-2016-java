@@ -2,6 +2,7 @@ package j2735.ITIS;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class ITIScodes extends Asn1Integer {
 	public ITIScodes(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class ITIScodesDeserializer extends IntegerDeserializer<ITIScodes> {
+		public ITIScodesDeserializer() {
+			super(ITIScodes.class);
+		}
+
+		@Override
+		protected ITIScodes construct() {
+			return new ITIScodes();
+		}
 	}
 }

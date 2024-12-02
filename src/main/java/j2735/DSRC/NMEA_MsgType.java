@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class NMEA_MsgType extends Asn1Integer {
 	public NMEA_MsgType(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class NMEA_MsgTypeDeserializer extends IntegerDeserializer<NMEA_MsgType> {
+		public NMEA_MsgTypeDeserializer() {
+			super(NMEA_MsgType.class);
+		}
+
+		@Override
+		protected NMEA_MsgType construct() {
+			return new NMEA_MsgType();
+		}
 	}
 }

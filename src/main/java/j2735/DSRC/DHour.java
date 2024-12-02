@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class DHour extends Asn1Integer {
 	public DHour(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class DHourDeserializer extends IntegerDeserializer<DHour> {
+		public DHourDeserializer() {
+			super(DHour.class);
+		}
+
+		@Override
+		protected DHour construct() {
+			return new DHour();
+		}
 	}
 }

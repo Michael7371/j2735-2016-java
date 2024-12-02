@@ -2,6 +2,7 @@ package j2735.NTCIP;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class EssMobileFriction extends Asn1Integer {
 	public EssMobileFriction(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class EssMobileFrictionDeserializer extends IntegerDeserializer<EssMobileFriction> {
+		public EssMobileFrictionDeserializer() {
+			super(EssMobileFriction.class);
+		}
+
+		@Override
+		protected EssMobileFriction construct() {
+			return new EssMobileFriction();
+		}
 	}
 }

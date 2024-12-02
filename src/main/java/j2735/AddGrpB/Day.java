@@ -2,6 +2,7 @@ package j2735.AddGrpB;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class Day extends Asn1Integer {
 	public Day(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class DayDeserializer extends IntegerDeserializer<Day> {
+		public DayDeserializer() {
+			super(Day.class);
+		}
+
+		@Override
+		protected Day construct() {
+			return new Day();
+		}
 	}
 }

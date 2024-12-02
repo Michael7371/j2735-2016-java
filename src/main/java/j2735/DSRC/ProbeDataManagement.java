@@ -11,6 +11,7 @@ import java.util.Optional;
 import asn2pojo.runtime.types.Asn1Type;
 import j2735.REGION.Reg_ProbeDataManagement;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -36,6 +37,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 public class ProbeDataManagement extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear timeStamp;
 	@Asn1Property(tag = 1)
 	private Sample sample;
@@ -46,6 +48,7 @@ public class ProbeDataManagement extends Asn1Sequence {
 	@Asn1Property(tag = 4)
 	private SnapshotChoice snapshot;
 	@Asn1Property(tag = 5)
+	@JsonDeserialize(using = SecondOfTime.SecondOfTimeDeserializer.class)
 	private SecondOfTime txInterval;
 	@Asn1Property(tag = 6, optional = true)
 	@JacksonXmlElementWrapper(localName = "dataElements")
@@ -81,8 +84,10 @@ public class ProbeDataManagement extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class TermChoice extends Asn1Choice {
 		@Asn1Property(tag = 0)
+		@JsonDeserialize(using = TermTime.TermTimeDeserializer.class)
 		private TermTime termtime;
 		@Asn1Property(tag = 1)
+		@JsonDeserialize(using = TermDistance.TermDistanceDeserializer.class)
 		private TermDistance termDistance;
 
 		TermChoice() {

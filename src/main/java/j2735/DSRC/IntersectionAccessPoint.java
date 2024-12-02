@@ -7,6 +7,7 @@ import java.util.List;
 import asn2pojo.runtime.types.Asn1Type;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -29,10 +30,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class IntersectionAccessPoint extends Asn1Choice {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = LaneID.LaneIDDeserializer.class)
 	private LaneID lane;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = ApproachID.ApproachIDDeserializer.class)
 	private ApproachID approach;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = LaneConnectionID.LaneConnectionIDDeserializer.class)
 	private LaneConnectionID connection;
 
 	IntersectionAccessPoint() {

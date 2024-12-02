@@ -7,6 +7,7 @@ import java.util.List;
 import asn2pojo.runtime.types.Asn1Type;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -29,8 +30,10 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class ApproachOrLane extends Asn1Choice {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = ApproachID.ApproachIDDeserializer.class)
 	private ApproachID approach;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = LaneID.LaneIDDeserializer.class)
 	private LaneID lane;
 
 	ApproachOrLane() {

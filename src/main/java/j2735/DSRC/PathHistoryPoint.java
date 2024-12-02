@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,18 +29,24 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class PathHistoryPoint extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = OffsetLL_B18.OffsetLL_B18Deserializer.class)
 	private OffsetLL_B18 latOffset;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = OffsetLL_B18.OffsetLL_B18Deserializer.class)
 	private OffsetLL_B18 lonOffset;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = VertOffset_B12.VertOffset_B12Deserializer.class)
 	private VertOffset_B12 elevationOffset;
 	@Asn1Property(tag = 3)
+	@JsonDeserialize(using = TimeOffset.TimeOffsetDeserializer.class)
 	private TimeOffset timeOffset;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = Speed.SpeedDeserializer.class)
 	private Speed speed;
 	@Asn1Property(tag = 5, optional = true)
 	private PositionalAccuracy posAccuracy;
 	@Asn1Property(tag = 6, optional = true)
+	@JsonDeserialize(using = CoarseHeading.CoarseHeadingDeserializer.class)
 	private CoarseHeading heading;
 
 	public OffsetLL_B18 getLatOffset() {

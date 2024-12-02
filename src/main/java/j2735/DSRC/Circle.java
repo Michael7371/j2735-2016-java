@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,6 +31,7 @@ public class Circle extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private Position3D center;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = Radius_B12.Radius_B12Deserializer.class)
 	private Radius_B12 radius;
 	@Asn1Property(tag = 2)
 	private DistanceUnits units;

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_SupplementalVehicleExtensions;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,6 +31,7 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 public class SupplementalVehicleExtensions extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = BasicVehicleClass.BasicVehicleClassDeserializer.class)
 	private BasicVehicleClass classification;
 	@Asn1Property(tag = 1, optional = true)
 	private VehicleClassification classDetails;

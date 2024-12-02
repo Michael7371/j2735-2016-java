@@ -12,6 +12,7 @@ import java.util.Optional;
 import asn2pojo.runtime.types.Asn1Type;
 import j2735.REGION.Reg_GeographicalPath;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -41,6 +42,7 @@ public class GeographicalPath extends Asn1Sequence {
 	@Asn1Property(tag = 2, optional = true)
 	private Position3D anchor;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = LaneWidth.LaneWidthDeserializer.class)
 	private LaneWidth laneWidth;
 	@Asn1Property(tag = 4, optional = true)
 	private DirectionOfUse directionality;

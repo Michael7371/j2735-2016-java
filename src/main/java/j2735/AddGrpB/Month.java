@@ -2,6 +2,7 @@ package j2735.AddGrpB;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class Month extends Asn1Integer {
 	public Month(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class MonthDeserializer extends IntegerDeserializer<Month> {
+		public MonthDeserializer() {
+			super(Month.class);
+		}
+
+		@Override
+		protected Month construct() {
+			return new Month();
+		}
 	}
 }

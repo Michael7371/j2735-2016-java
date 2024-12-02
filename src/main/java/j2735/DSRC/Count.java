@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class Count extends Asn1Integer {
 	public Count(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class CountDeserializer extends IntegerDeserializer<Count> {
+		public CountDeserializer() {
+			super(Count.class);
+		}
+
+		@Override
+		protected Count construct() {
+			return new Count();
+		}
 	}
 }

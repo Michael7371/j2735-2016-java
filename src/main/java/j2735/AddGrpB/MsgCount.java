@@ -2,6 +2,7 @@ package j2735.AddGrpB;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class MsgCount extends Asn1Integer {
 	public MsgCount(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class MsgCountDeserializer extends IntegerDeserializer<MsgCount> {
+		public MsgCountDeserializer() {
+			super(MsgCount.class);
+		}
+
+		@Override
+		protected MsgCount construct() {
+			return new MsgCount();
+		}
 	}
 }

@@ -8,6 +8,7 @@ import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import j2735.REGION.Reg_MovementState;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -35,6 +36,7 @@ public class MovementState extends Asn1Sequence {
 	@Asn1Property(tag = 0, optional = true)
 	private DescriptiveName movementName;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = SignalGroupID.SignalGroupIDDeserializer.class)
 	private SignalGroupID signalGroup;
 	@Asn1Property(tag = 2, name = "state-time-speed")
 	@JsonProperty("state-time-speed")

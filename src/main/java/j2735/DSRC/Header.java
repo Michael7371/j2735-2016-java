@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,12 +29,16 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class Header extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = DYear.DYearDeserializer.class)
 	private DYear year;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear timeStamp;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = DSecond.DSecondDeserializer.class)
 	private DSecond secMark;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = MsgCount.MsgCountDeserializer.class)
 	private MsgCount msgIssueRevision;
 
 	public DYear getYear() {

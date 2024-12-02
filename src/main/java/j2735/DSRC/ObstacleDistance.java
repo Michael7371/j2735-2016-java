@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class ObstacleDistance extends Asn1Integer {
 	public ObstacleDistance(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class ObstacleDistanceDeserializer extends IntegerDeserializer<ObstacleDistance> {
+		public ObstacleDistanceDeserializer() {
+			super(ObstacleDistance.class);
+		}
+
+		@Override
+		protected ObstacleDistance construct() {
+			return new ObstacleDistance();
+		}
 	}
 }

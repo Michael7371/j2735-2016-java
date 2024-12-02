@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class SignalGroupID extends Asn1Integer {
 	public SignalGroupID(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class SignalGroupIDDeserializer extends IntegerDeserializer<SignalGroupID> {
+		public SignalGroupIDDeserializer() {
+			super(SignalGroupID.class);
+		}
+
+		@Override
+		protected SignalGroupID construct() {
+			return new SignalGroupID();
+		}
 	}
 }

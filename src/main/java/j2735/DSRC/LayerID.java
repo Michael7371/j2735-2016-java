@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class LayerID extends Asn1Integer {
 	public LayerID(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class LayerIDDeserializer extends IntegerDeserializer<LayerID> {
+		public LayerIDDeserializer() {
+			super(LayerID.class);
+		}
+
+		@Override
+		protected LayerID construct() {
+			return new LayerID();
+		}
 	}
 }

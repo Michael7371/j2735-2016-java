@@ -2,6 +2,7 @@ package j2735.NTCIP;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class EssPrecipRate extends Asn1Integer {
 	public EssPrecipRate(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class EssPrecipRateDeserializer extends IntegerDeserializer<EssPrecipRate> {
+		public EssPrecipRateDeserializer() {
+			super(EssPrecipRate.class);
+		}
+
+		@Override
+		protected EssPrecipRate construct() {
+			return new EssPrecipRate();
+		}
 	}
 }

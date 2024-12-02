@@ -8,6 +8,7 @@ import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.ITIS.ITIScodes;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import j2735.REGION.Reg_RoadSideAlert;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -31,10 +32,13 @@ import j2735.REGION.Reg_RoadSideAlert;
 public class RoadSideAlert extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = MsgCount.MsgCountDeserializer.class)
 	private MsgCount msgCnt;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear timeStamp;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = ITIScodes.ITIScodesDeserializer.class)
 	private ITIScodes typeEvent;
 	@Asn1Property(tag = 3, optional = true)
 	private SequenceOfDescription description;

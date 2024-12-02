@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class VertOffset_B08 extends Asn1Integer {
 	public VertOffset_B08(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class VertOffset_B08Deserializer extends IntegerDeserializer<VertOffset_B08> {
+		public VertOffset_B08Deserializer() {
+			super(VertOffset_B08.class);
+		}
+
+		@Override
+		protected VertOffset_B08 construct() {
+			return new VertOffset_B08();
+		}
 	}
 }

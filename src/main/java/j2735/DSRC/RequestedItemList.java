@@ -3,6 +3,7 @@ package j2735.DSRC;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 
 /**
  * 
@@ -26,5 +27,23 @@ public class RequestedItemList extends Asn1SequenceOf<RequestedItem> {
 
 	RequestedItemList() {
 		super(RequestedItem.class, 1L, 32L);
+	}
+
+	public static class RequestedItemListDeserializer
+			extends
+				SequenceOfEnumeratedDeserializer<RequestedItem, RequestedItemList> {
+		public RequestedItemListDeserializer() {
+			super(RequestedItemList.class, RequestedItem.class);
+		}
+
+		@Override
+		protected RequestedItem[] listEnumValues() {
+			return RequestedItem.values();
+		}
+
+		@Override
+		protected RequestedItemList construct() {
+			return new RequestedItemList();
+		}
 	}
 }

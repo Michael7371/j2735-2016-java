@@ -4,6 +4,7 @@ import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import j2735.DSRC.PartII_Id;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 abstract public class PartIIcontent<TValue> extends Asn1Sequence {
 
 	@JsonIgnore
+	@JsonDeserialize(using = PartII_Id.PartII_IdDeserializer.class)
 	final protected PartII_Id partII_Id;
 	@JsonIgnore
 	final protected String name;

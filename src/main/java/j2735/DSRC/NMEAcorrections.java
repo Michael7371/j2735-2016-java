@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_NMEAcorrections;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,12 +31,15 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 public class NMEAcorrections extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear timeStamp;
 	@Asn1Property(tag = 1, optional = true)
 	private NMEA_Revision rev;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = NMEA_MsgType.NMEA_MsgTypeDeserializer.class)
 	private NMEA_MsgType msg;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = ObjectCount.ObjectCountDeserializer.class)
 	private ObjectCount wdCount;
 	@Asn1Property(tag = 4)
 	private NMEA_Payload payload;

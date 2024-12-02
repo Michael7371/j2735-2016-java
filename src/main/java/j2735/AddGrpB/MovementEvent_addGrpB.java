@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.DSRC.TimeIntervalConfidence;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -29,16 +30,22 @@ import j2735.DSRC.TimeIntervalConfidence;
 public class MovementEvent_addGrpB extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = TimeRemaining.TimeRemainingDeserializer.class)
 	private TimeRemaining startTime;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = MinTimetoChange.MinTimetoChangeDeserializer.class)
 	private MinTimetoChange minEndTime;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = MaxTimetoChange.MaxTimetoChangeDeserializer.class)
 	private MaxTimetoChange maxEndTime;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = TimeRemaining.TimeRemainingDeserializer.class)
 	private TimeRemaining likelyTime;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = TimeIntervalConfidence.TimeIntervalConfidenceDeserializer.class)
 	private TimeIntervalConfidence confidence;
 	@Asn1Property(tag = 5, optional = true)
+	@JsonDeserialize(using = TimeRemaining.TimeRemainingDeserializer.class)
 	private TimeRemaining nextTime;
 
 	public TimeRemaining getStartTime() {

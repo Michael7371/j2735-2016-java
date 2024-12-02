@@ -10,6 +10,7 @@ import j2735.ITIS.IncidentResponseEquipment;
 import j2735.ITIS.ResponderGroupAffected;
 import j2735.REGION.Reg_VehicleClassification;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -33,10 +34,12 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 public class VehicleClassification extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = BasicVehicleClass.BasicVehicleClassDeserializer.class)
 	private BasicVehicleClass keyType;
 	@Asn1Property(tag = 1, optional = true)
 	private BasicVehicleRole role;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = Iso3833VehicleType.Iso3833VehicleTypeDeserializer.class)
 	private Iso3833VehicleType iso3883;
 	@Asn1Property(tag = 3, optional = true)
 	private VehicleType hpmsType;
@@ -47,6 +50,7 @@ public class VehicleClassification extends Asn1Sequence {
 	@Asn1Property(tag = 6, optional = true)
 	private ResponderGroupAffected responderType;
 	@Asn1Property(tag = 7, optional = true)
+	@JsonDeserialize(using = FuelType.FuelTypeDeserializer.class)
 	private FuelType fuelType;
 	@Asn1Property(tag = 8, optional = true)
 	private SequenceOfRegional regional;

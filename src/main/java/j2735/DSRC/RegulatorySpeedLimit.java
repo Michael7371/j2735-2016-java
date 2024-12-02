@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,6 +31,7 @@ public class RegulatorySpeedLimit extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private SpeedLimitType type;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = Velocity.VelocityDeserializer.class)
 	private Velocity speed;
 
 	public SpeedLimitType getType() {

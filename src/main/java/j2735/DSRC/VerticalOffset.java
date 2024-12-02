@@ -8,6 +8,7 @@ import java.util.List;
 import asn2pojo.runtime.types.Asn1Type;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,18 +31,25 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class VerticalOffset extends Asn1Choice {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = VertOffset_B07.VertOffset_B07Deserializer.class)
 	private VertOffset_B07 offset1;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = VertOffset_B08.VertOffset_B08Deserializer.class)
 	private VertOffset_B08 offset2;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = VertOffset_B09.VertOffset_B09Deserializer.class)
 	private VertOffset_B09 offset3;
 	@Asn1Property(tag = 3)
+	@JsonDeserialize(using = VertOffset_B10.VertOffset_B10Deserializer.class)
 	private VertOffset_B10 offset4;
 	@Asn1Property(tag = 4)
+	@JsonDeserialize(using = VertOffset_B11.VertOffset_B11Deserializer.class)
 	private VertOffset_B11 offset5;
 	@Asn1Property(tag = 5)
+	@JsonDeserialize(using = VertOffset_B12.VertOffset_B12Deserializer.class)
 	private VertOffset_B12 offset6;
 	@Asn1Property(tag = 6)
+	@JsonDeserialize(using = Elevation.ElevationDeserializer.class)
 	private Elevation elevation;
 	@Asn1Property(tag = 7)
 	private Reg_VerticalOffset regional;

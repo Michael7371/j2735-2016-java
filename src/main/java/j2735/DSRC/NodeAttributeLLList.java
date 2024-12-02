@@ -1,10 +1,9 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 
 /**
  * 
@@ -30,8 +29,10 @@ public class NodeAttributeLLList extends Asn1SequenceOf<NodeAttributeLL> {
 		super(NodeAttributeLL.class, 1L, 8L);
 	}
 
-	public static class NodeAttributeLLListDeserializer extends SequenceOfEnumeratedDeserializer<NodeAttributeLL, NodeAttributeLLList> {
-		protected NodeAttributeLLListDeserializer() {
+	public static class NodeAttributeLLListDeserializer
+			extends
+				SequenceOfEnumeratedDeserializer<NodeAttributeLL, NodeAttributeLLList> {
+		public NodeAttributeLLListDeserializer() {
 			super(NodeAttributeLLList.class, NodeAttributeLL.class);
 		}
 

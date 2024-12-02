@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class DeltaTime extends Asn1Integer {
 	public DeltaTime(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class DeltaTimeDeserializer extends IntegerDeserializer<DeltaTime> {
+		public DeltaTimeDeserializer() {
+			super(DeltaTime.class);
+		}
+
+		@Override
+		protected DeltaTime construct() {
+			return new DeltaTime();
+		}
 	}
 }

@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class PersonalClusterRadius extends Asn1Integer {
 	public PersonalClusterRadius(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class PersonalClusterRadiusDeserializer extends IntegerDeserializer<PersonalClusterRadius> {
+		public PersonalClusterRadiusDeserializer() {
+			super(PersonalClusterRadius.class);
+		}
+
+		@Override
+		protected PersonalClusterRadius construct() {
+			return new PersonalClusterRadius();
+		}
 	}
 }

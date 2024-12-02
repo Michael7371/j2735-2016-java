@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_SignalRequestPackage;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -32,10 +33,13 @@ public class SignalRequestPackage extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private SignalRequest request;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear minute;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = DSecond.DSecondDeserializer.class)
 	private DSecond second;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = DSecond.DSecondDeserializer.class)
 	private DSecond duration;
 	@Asn1Property(tag = 4, optional = true)
 	private SequenceOfRegional regional;

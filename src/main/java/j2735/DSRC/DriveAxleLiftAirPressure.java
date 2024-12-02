@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class DriveAxleLiftAirPressure extends Asn1Integer {
 	public DriveAxleLiftAirPressure(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class DriveAxleLiftAirPressureDeserializer extends IntegerDeserializer<DriveAxleLiftAirPressure> {
+		public DriveAxleLiftAirPressureDeserializer() {
+			super(DriveAxleLiftAirPressure.class);
+		}
+
+		@Override
+		protected DriveAxleLiftAirPressure construct() {
+			return new DriveAxleLiftAirPressure();
+		}
 	}
 }

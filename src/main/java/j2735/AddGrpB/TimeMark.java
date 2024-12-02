@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,10 +29,13 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class TimeMark extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = Year.YearDeserializer.class)
 	private Year year;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = Month.MonthDeserializer.class)
 	private Month month;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = Day.DayDeserializer.class)
 	private Day day;
 	@Asn1Property(tag = 3)
 	private SummerTime summerTime;
@@ -40,12 +44,16 @@ public class TimeMark extends Asn1Sequence {
 	@Asn1Property(tag = 5)
 	private DayOfWeek dayofWeek;
 	@Asn1Property(tag = 6)
+	@JsonDeserialize(using = Hour.HourDeserializer.class)
 	private Hour hour;
 	@Asn1Property(tag = 7)
+	@JsonDeserialize(using = Minute.MinuteDeserializer.class)
 	private Minute minute;
 	@Asn1Property(tag = 8)
+	@JsonDeserialize(using = Second.SecondDeserializer.class)
 	private Second second;
 	@Asn1Property(tag = 9)
+	@JsonDeserialize(using = TenthSecond.TenthSecondDeserializer.class)
 	private TenthSecond tenthSecond;
 
 	public Year getYear() {

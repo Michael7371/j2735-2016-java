@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_PersonalSafetyMessage;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -32,8 +33,10 @@ public class PersonalSafetyMessage extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private PersonalDeviceUserType basicType;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = DSecond.DSecondDeserializer.class)
 	private DSecond secMark;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = MsgCount.MsgCountDeserializer.class)
 	private MsgCount msgCnt;
 	@Asn1Property(tag = 3)
 	private TemporaryID id;
@@ -42,8 +45,10 @@ public class PersonalSafetyMessage extends Asn1Sequence {
 	@Asn1Property(tag = 5)
 	private PositionalAccuracy accuracy;
 	@Asn1Property(tag = 6)
+	@JsonDeserialize(using = Velocity.VelocityDeserializer.class)
 	private Velocity speed;
 	@Asn1Property(tag = 7)
+	@JsonDeserialize(using = Heading.HeadingDeserializer.class)
 	private Heading heading;
 	@Asn1Property(tag = 8, optional = true)
 	private AccelerationSet4Way accelSet;
@@ -62,6 +67,7 @@ public class PersonalSafetyMessage extends Asn1Sequence {
 	@Asn1Property(tag = 15, optional = true)
 	private NumberOfParticipantsInCluster clusterSize;
 	@Asn1Property(tag = 16, optional = true)
+	@JsonDeserialize(using = PersonalClusterRadius.PersonalClusterRadiusDeserializer.class)
 	private PersonalClusterRadius clusterRadius;
 	@Asn1Property(tag = 17, optional = true)
 	private PublicSafetyEventResponderWorkerType eventResponderType;
@@ -76,6 +82,7 @@ public class PersonalSafetyMessage extends Asn1Sequence {
 	@Asn1Property(tag = 22, optional = true)
 	private Attachment attachment;
 	@Asn1Property(tag = 23, optional = true)
+	@JsonDeserialize(using = AttachmentRadius.AttachmentRadiusDeserializer.class)
 	private AttachmentRadius attachmentRadius;
 	@Asn1Property(tag = 24, optional = true)
 	private AnimalType animalType;

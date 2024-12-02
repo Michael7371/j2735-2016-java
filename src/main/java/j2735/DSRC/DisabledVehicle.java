@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import j2735.ITIS.ITIScodes;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.ITIS.GenericLocations;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,6 +31,7 @@ import j2735.ITIS.GenericLocations;
 public class DisabledVehicle extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = ITIScodes.ITIScodesDeserializer.class)
 	private ITIScodes statusDetails;
 	@Asn1Property(tag = 1, optional = true)
 	private GenericLocations locationDetails;

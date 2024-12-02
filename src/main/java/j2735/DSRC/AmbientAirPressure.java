@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class AmbientAirPressure extends Asn1Integer {
 	public AmbientAirPressure(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class AmbientAirPressureDeserializer extends IntegerDeserializer<AmbientAirPressure> {
+		public AmbientAirPressureDeserializer() {
+			super(AmbientAirPressure.class);
+		}
+
+		@Override
+		protected AmbientAirPressure construct() {
+			return new AmbientAirPressure();
+		}
 	}
 }

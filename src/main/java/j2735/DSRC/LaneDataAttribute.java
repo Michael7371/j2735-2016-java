@@ -2,7 +2,6 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import j2735.REGION.Reg_LaneDataAttribute;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import java.util.Optional;
@@ -10,6 +9,7 @@ import java.util.List;
 import asn2pojo.runtime.types.Asn1Type;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 

@@ -2,6 +2,7 @@ package j2735.AddGrpB;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class MaxTimetoChange extends Asn1Integer {
 	public MaxTimetoChange(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class MaxTimetoChangeDeserializer extends IntegerDeserializer<MaxTimetoChange> {
+		public MaxTimetoChangeDeserializer() {
+			super(MaxTimetoChange.class);
+		}
+
+		@Override
+		protected MaxTimetoChange construct() {
+			return new MaxTimetoChange();
+		}
 	}
 }

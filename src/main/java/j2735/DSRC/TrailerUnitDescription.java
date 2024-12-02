@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -32,26 +33,33 @@ public class TrailerUnitDescription extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private IsDolly isDolly;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = VehicleWidth.VehicleWidthDeserializer.class)
 	private VehicleWidth width;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = VehicleLength.VehicleLengthDeserializer.class)
 	private VehicleLength length;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = VehicleHeight.VehicleHeightDeserializer.class)
 	private VehicleHeight height;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = TrailerMass.TrailerMassDeserializer.class)
 	private TrailerMass mass;
 	@Asn1Property(tag = 5, optional = true)
 	private BumperHeights bumperHeights;
 	@Asn1Property(tag = 6, optional = true)
+	@JsonDeserialize(using = VehicleHeight.VehicleHeightDeserializer.class)
 	private VehicleHeight centerOfGravity;
 	@Asn1Property(tag = 7)
 	private PivotPointDescription frontPivot;
 	@Asn1Property(tag = 8, optional = true)
 	private PivotPointDescription rearPivot;
 	@Asn1Property(tag = 9, optional = true)
+	@JsonDeserialize(using = Offset_B12.Offset_B12Deserializer.class)
 	private Offset_B12 rearWheelOffset;
 	@Asn1Property(tag = 10)
 	private Node_XY_24b positionOffset;
 	@Asn1Property(tag = 11, optional = true)
+	@JsonDeserialize(using = VertOffset_B07.VertOffset_B07Deserializer.class)
 	private VertOffset_B07 elevationOffset;
 	@Asn1Property(tag = 12, optional = true)
 	@JacksonXmlElementWrapper(localName = "crumbData")

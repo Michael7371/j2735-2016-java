@@ -7,6 +7,7 @@ import java.util.List;
 import asn2pojo.runtime.types.Asn1Type;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -31,6 +32,7 @@ public class VehicleID extends Asn1Choice {
 	@Asn1Property(tag = 0)
 	private TemporaryID entityID;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = StationID.StationIDDeserializer.class)
 	private StationID stationID;
 
 	VehicleID() {

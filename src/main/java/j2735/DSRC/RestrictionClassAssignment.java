@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
 /**
  * 
@@ -28,8 +30,10 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class RestrictionClassAssignment extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = RestrictionClassID.RestrictionClassIDDeserializer.class)
 	private RestrictionClassID id;
 	@Asn1Property(tag = 1)
+	@JacksonXmlElementWrapper(useWrapping = false)
 	private RestrictionUserTypeList users;
 
 	public RestrictionClassID getId() {

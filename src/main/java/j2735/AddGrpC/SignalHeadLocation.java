@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import j2735.DSRC.NodeOffsetPointXY;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.DSRC.SignalGroupID;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -32,6 +33,7 @@ public class SignalHeadLocation extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private NodeOffsetPointXY node;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = SignalGroupID.SignalGroupIDDeserializer.class)
 	private SignalGroupID signalGroupID;
 
 	public NodeOffsetPointXY getNode() {

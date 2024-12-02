@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import j2735.REGION.Reg_ProbeVehicleData;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,8 +31,10 @@ import j2735.REGION.Reg_ProbeVehicleData;
 public class ProbeVehicleData extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear timeStamp;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = ProbeSegmentNumber.ProbeSegmentNumberDeserializer.class)
 	private ProbeSegmentNumber segNum;
 	@Asn1Property(tag = 2, optional = true)
 	private VehicleIdent probeID;

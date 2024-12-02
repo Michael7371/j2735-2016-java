@@ -9,6 +9,7 @@ import asn2pojo.runtime.types.Asn1Choice;
 import java.util.List;
 import java.util.Optional;
 import asn2pojo.runtime.types.Asn1Type;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -32,6 +33,7 @@ import asn2pojo.runtime.types.Asn1Type;
 public class OffsetSystem extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = Zoom.ZoomDeserializer.class)
 	private Zoom scale;
 	@Asn1Property(tag = 1)
 	private OffsetChoice offset;

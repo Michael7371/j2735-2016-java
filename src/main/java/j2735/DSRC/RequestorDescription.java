@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_RequestorDescription;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -44,6 +45,7 @@ public class RequestorDescription extends Asn1Sequence {
 	@Asn1Property(tag = 6, optional = true)
 	private TransitVehicleOccupancy transitOccupancy;
 	@Asn1Property(tag = 7, optional = true)
+	@JsonDeserialize(using = DeltaTime.DeltaTimeDeserializer.class)
 	private DeltaTime transitSchedule;
 	@Asn1Property(tag = 8, optional = true)
 	private SequenceOfRegional regional;

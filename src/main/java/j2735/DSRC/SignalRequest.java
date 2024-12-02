@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_SignalRequest;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -32,6 +33,7 @@ public class SignalRequest extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private IntersectionReferenceID id;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = RequestID.RequestIDDeserializer.class)
 	private RequestID requestID;
 	@Asn1Property(tag = 2)
 	private PriorityRequestType requestType;

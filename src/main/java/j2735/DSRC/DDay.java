@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class DDay extends Asn1Integer {
 	public DDay(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class DDayDeserializer extends IntegerDeserializer<DDay> {
+		public DDayDeserializer() {
+			super(DDay.class);
+		}
+
+		@Override
+		protected DDay construct() {
+			return new DDay();
+		}
 	}
 }

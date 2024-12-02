@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import j2735.DSRC.StationID;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.DSRC.LaneID;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,8 +31,10 @@ import j2735.DSRC.LaneID;
 public class VehicleToLanePosition extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = StationID.StationIDDeserializer.class)
 	private StationID stationID;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = LaneID.LaneIDDeserializer.class)
 	private LaneID laneID;
 
 	public StationID getStationID() {

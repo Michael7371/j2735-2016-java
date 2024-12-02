@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,16 +29,20 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class TireData extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
+	@JsonDeserialize(using = TireLocation.TireLocationDeserializer.class)
 	private TireLocation location;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = TirePressure.TirePressureDeserializer.class)
 	private TirePressure pressure;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = TireTemp.TireTempDeserializer.class)
 	private TireTemp temp;
 	@Asn1Property(tag = 3, optional = true)
 	private WheelSensorStatus wheelSensorStatus;
 	@Asn1Property(tag = 4, optional = true)
 	private WheelEndElectFault wheelEndElectFault;
 	@Asn1Property(tag = 5, optional = true)
+	@JsonDeserialize(using = TireLeakageRate.TireLeakageRateDeserializer.class)
 	private TireLeakageRate leakageRate;
 	@Asn1Property(tag = 6, optional = true)
 	private TirePressureThresholdDetection detection;

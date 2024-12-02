@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class BumperHeight extends Asn1Integer {
 	public BumperHeight(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class BumperHeightDeserializer extends IntegerDeserializer<BumperHeight> {
+		public BumperHeightDeserializer() {
+			super(BumperHeight.class);
+		}
+
+		@Override
+		protected BumperHeight construct() {
+			return new BumperHeight();
+		}
 	}
 }

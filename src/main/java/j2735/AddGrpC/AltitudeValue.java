@@ -2,6 +2,7 @@ package j2735.AddGrpC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class AltitudeValue extends Asn1Integer {
 	public AltitudeValue(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class AltitudeValueDeserializer extends IntegerDeserializer<AltitudeValue> {
+		public AltitudeValueDeserializer() {
+			super(AltitudeValue.class);
+		}
+
+		@Override
+		protected AltitudeValue construct() {
+			return new AltitudeValue();
+		}
 	}
 }

@@ -8,6 +8,7 @@ import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import j2735.REGION.Reg_Position3D;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -31,11 +32,14 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 public class Position3D extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = Latitude.LatitudeDeserializer.class)
 	private Latitude lat;
 	@Asn1Property(tag = 1, name = "long")
 	@JsonProperty("long")
+	@JsonDeserialize(using = Longitude.LongitudeDeserializer.class)
 	private Longitude long_;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = Elevation.ElevationDeserializer.class)
 	private Elevation elevation;
 	@Asn1Property(tag = 3, optional = true)
 	private SequenceOfRegional regional;

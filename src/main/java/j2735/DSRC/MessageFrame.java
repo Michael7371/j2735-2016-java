@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes;
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -95,6 +96,7 @@ import asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType;
 abstract public class MessageFrame<TValue> extends Asn1Sequence {
 
 	@JsonIgnore
+	@JsonDeserialize(using = DSRCmsgID.DSRCmsgIDDeserializer.class)
 	final protected DSRCmsgID messageId;
 	@JsonIgnore
 	final protected String name;

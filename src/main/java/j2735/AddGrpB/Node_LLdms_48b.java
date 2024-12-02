@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,8 +29,10 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class Node_LLdms_48b extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = LongitudeDMS.LongitudeDMSDeserializer.class)
 	private LongitudeDMS lon;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = LatitudeDMS.LatitudeDMSDeserializer.class)
 	private LatitudeDMS lat;
 
 	public LongitudeDMS getLon() {

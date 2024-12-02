@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class WiperRate extends Asn1Integer {
 	public WiperRate(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class WiperRateDeserializer extends IntegerDeserializer<WiperRate> {
+		public WiperRateDeserializer() {
+			super(WiperRate.class);
+		}
+
+		@Override
+		protected WiperRate construct() {
+			return new WiperRate();
+		}
 	}
 }

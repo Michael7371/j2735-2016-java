@@ -8,6 +8,7 @@ import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import j2735.REGION.Reg_AdvisorySpeed;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -33,13 +34,16 @@ public class AdvisorySpeed extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private AdvisorySpeedType type;
 	@Asn1Property(tag = 1, optional = true)
+	@JsonDeserialize(using = SpeedAdvice.SpeedAdviceDeserializer.class)
 	private SpeedAdvice speed;
 	@Asn1Property(tag = 2, optional = true)
 	private SpeedConfidence confidence;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = ZoneLength.ZoneLengthDeserializer.class)
 	private ZoneLength distance;
 	@Asn1Property(tag = 4, name = "class", optional = true)
 	@JsonProperty("class")
+	@JsonDeserialize(using = RestrictionClassID.RestrictionClassIDDeserializer.class)
 	private RestrictionClassID class_;
 	@Asn1Property(tag = 5, optional = true)
 	private SequenceOfRegional regional;

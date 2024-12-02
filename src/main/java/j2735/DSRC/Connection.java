@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -32,10 +33,13 @@ public class Connection extends Asn1Sequence {
 	@Asn1Property(tag = 1, optional = true)
 	private IntersectionReferenceID remoteIntersection;
 	@Asn1Property(tag = 2, optional = true)
+	@JsonDeserialize(using = SignalGroupID.SignalGroupIDDeserializer.class)
 	private SignalGroupID signalGroup;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = RestrictionClassID.RestrictionClassIDDeserializer.class)
 	private RestrictionClassID userClass;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = LaneConnectionID.LaneConnectionIDDeserializer.class)
 	private LaneConnectionID connectionID;
 
 	public ConnectingLane getConnectingLane() {

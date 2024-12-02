@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class FuelType extends Asn1Integer {
 	public FuelType(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class FuelTypeDeserializer extends IntegerDeserializer<FuelType> {
+		public FuelTypeDeserializer() {
+			super(FuelType.class);
+		}
+
+		@Override
+		protected FuelType construct() {
+			return new FuelType();
+		}
 	}
 }

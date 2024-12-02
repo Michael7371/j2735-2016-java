@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class SemiMajorAxisAccuracy extends Asn1Integer {
 	public SemiMajorAxisAccuracy(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class SemiMajorAxisAccuracyDeserializer extends IntegerDeserializer<SemiMajorAxisAccuracy> {
+		public SemiMajorAxisAccuracyDeserializer() {
+			super(SemiMajorAxisAccuracy.class);
+		}
+
+		@Override
+		protected SemiMajorAxisAccuracy construct() {
+			return new SemiMajorAxisAccuracy();
+		}
 	}
 }

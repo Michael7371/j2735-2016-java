@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,14 +29,18 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class TrailerHistoryPoint extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = Angle.AngleDeserializer.class)
 	private Angle pivotAngle;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = TimeOffset.TimeOffsetDeserializer.class)
 	private TimeOffset timeOffset;
 	@Asn1Property(tag = 2)
 	private Node_XY_24b positionOffset;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = VertOffset_B07.VertOffset_B07Deserializer.class)
 	private VertOffset_B07 elevationOffset;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = CoarseHeading.CoarseHeadingDeserializer.class)
 	private CoarseHeading heading;
 
 	public Angle getPivotAngle() {

@@ -2,6 +2,7 @@ package j2735.NTCIP;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class EssSolarRadiation extends Asn1Integer {
 	public EssSolarRadiation(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class EssSolarRadiationDeserializer extends IntegerDeserializer<EssSolarRadiation> {
+		public EssSolarRadiationDeserializer() {
+			super(EssSolarRadiation.class);
+		}
+
+		@Override
+		protected EssSolarRadiation construct() {
+			return new EssSolarRadiation();
+		}
 	}
 }

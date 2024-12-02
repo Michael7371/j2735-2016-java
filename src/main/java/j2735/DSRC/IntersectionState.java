@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_IntersectionState;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -36,12 +37,15 @@ public class IntersectionState extends Asn1Sequence {
 	@Asn1Property(tag = 1)
 	private IntersectionReferenceID id;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = MsgCount.MsgCountDeserializer.class)
 	private MsgCount revision;
 	@Asn1Property(tag = 3)
 	private IntersectionStatusObject status;
 	@Asn1Property(tag = 4, optional = true)
+	@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 	private MinuteOfTheYear moy;
 	@Asn1Property(tag = 5, optional = true)
+	@JsonDeserialize(using = DSecond.DSecondDeserializer.class)
 	private DSecond timeStamp;
 	@Asn1Property(tag = 6, optional = true)
 	@JacksonXmlElementWrapper(localName = "enabledLanes")

@@ -2,6 +2,7 @@ package j2735.AddGrpB;
 
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 
 /**
  * 
@@ -30,5 +31,16 @@ public class TimeRemaining extends Asn1Integer {
 	public TimeRemaining(long value) {
 		this();
 		this.value = value;
+	}
+
+	public static class TimeRemainingDeserializer extends IntegerDeserializer<TimeRemaining> {
+		public TimeRemainingDeserializer() {
+			super(TimeRemaining.class);
+		}
+
+		@Override
+		protected TimeRemaining construct() {
+			return new TimeRemaining();
+		}
 	}
 }

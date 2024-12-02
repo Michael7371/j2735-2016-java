@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,12 +31,16 @@ public class AccelerationSet4Way extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, name = "long")
 	@JsonProperty("long")
+	@JsonDeserialize(using = Acceleration.AccelerationDeserializer.class)
 	private Acceleration long_;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = Acceleration.AccelerationDeserializer.class)
 	private Acceleration lat;
 	@Asn1Property(tag = 2)
+	@JsonDeserialize(using = VerticalAcceleration.VerticalAccelerationDeserializer.class)
 	private VerticalAcceleration vert;
 	@Asn1Property(tag = 3)
+	@JsonDeserialize(using = YawRate.YawRateDeserializer.class)
 	private YawRate yaw;
 
 	public Acceleration getLong_() {

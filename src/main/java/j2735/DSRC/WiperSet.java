@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -30,10 +31,12 @@ public class WiperSet extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private WiperStatus statusFront;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = WiperRate.WiperRateDeserializer.class)
 	private WiperRate rateFront;
 	@Asn1Property(tag = 2, optional = true)
 	private WiperStatus statusRear;
 	@Asn1Property(tag = 3, optional = true)
+	@JsonDeserialize(using = WiperRate.WiperRateDeserializer.class)
 	private WiperRate rateRear;
 
 	public WiperStatus getStatusFront() {

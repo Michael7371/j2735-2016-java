@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import asn2pojo.runtime.annotations.Asn1Property;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -28,8 +29,10 @@ import asn2pojo.runtime.annotations.Asn1Property;
 public class PivotPointDescription extends Asn1Sequence {
 
 	@Asn1Property(tag = 0)
+	@JsonDeserialize(using = Offset_B11.Offset_B11Deserializer.class)
 	private Offset_B11 pivotOffset;
 	@Asn1Property(tag = 1)
+	@JsonDeserialize(using = Angle.AngleDeserializer.class)
 	private Angle pivotAngle;
 	@Asn1Property(tag = 2)
 	private PivotingAllowed pivots;
