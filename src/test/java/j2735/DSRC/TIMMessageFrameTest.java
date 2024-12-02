@@ -51,6 +51,20 @@ public class TIMMessageFrameTest extends BaseSerializeTest<TravelerInformationMe
         assertThat(xml, notNullValue());
     }
 
+//    @Test
+//    public void xmlDeserialize_generatedXml() throws IOException {
+//        TravelerInformationMessageFrame tim = fromXml(loadResource("/GeneratedTim.xml"));
+//        assertThat(tim, notNullValue());
+//        assertThat(tim, hasProperty("messageId", equalTo(new DSRCmsgID(31))));
+//    }
+//
+//    @Test
+//    public void xmlDeserialize_generatedXmlWithComputedLanes() throws IOException {
+//        TravelerInformationMessageFrame tim = fromXml(loadResource("/GeneratedTimWithComputedLanes.xml"));
+//        assertThat(tim, notNullValue());
+//        assertThat(tim, hasProperty("messageId", equalTo(new DSRCmsgID(31))));
+//    }
+
     public final static String expectedXml = """
 <MessageFrame>
     <messageId>31</messageId>
@@ -308,4 +322,8 @@ public class TIMMessageFrameTest extends BaseSerializeTest<TravelerInformationMe
     </value>
 </MessageFrame>
 """;
+
+
+
+
 }

@@ -1,15 +1,15 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import asn2pojo.runtime.annotations.Asn1Property;
+import j2735.ITIS.VehicleGroupAffected;
 import j2735.ITIS.IncidentResponseEquipment;
 import j2735.ITIS.ResponderGroupAffected;
-import j2735.ITIS.VehicleGroupAffected;
 import j2735.REGION.Reg_VehicleClassification;
+import asn2pojo.runtime.types.Asn1SequenceOf;
 
 /**
  * 
@@ -118,7 +118,7 @@ public class VehicleClassification extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_VehicleClassification> {
 		SequenceOfRegional() {
-			super(Reg_VehicleClassification.class, 1L, 4L);
+			super(j2735.REGION.Reg_VehicleClassification.class, 1L, 4L);
 		}
 	}
 

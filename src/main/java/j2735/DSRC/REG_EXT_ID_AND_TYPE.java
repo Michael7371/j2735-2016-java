@@ -1,5 +1,7 @@
 package j2735.DSRC;
 
+import j2735.DSRC.RegionId;
+
 /**
  * 
  * <p>

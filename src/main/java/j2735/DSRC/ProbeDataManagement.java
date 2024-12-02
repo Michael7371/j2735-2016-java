@@ -1,19 +1,18 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
-import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1Sequence;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import asn2pojo.runtime.types.Asn1Type;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import j2735.REGION.Reg_ProbeDataManagement;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Choice;
 import java.util.List;
 import java.util.Optional;
+import asn2pojo.runtime.types.Asn1Type;
+import j2735.REGION.Reg_ProbeDataManagement;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 /**
  * 
@@ -180,7 +179,7 @@ public class ProbeDataManagement extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_ProbeDataManagement> {
 		SequenceOfRegional() {
-			super(Reg_ProbeDataManagement.class, 1L, 4L);
+			super(j2735.REGION.Reg_ProbeDataManagement.class, 1L, 4L);
 		}
 	}
 

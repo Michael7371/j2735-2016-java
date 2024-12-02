@@ -1,18 +1,12 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
-import asn2pojo.runtime.serialization.NestedSequenceOfDeserializer;
-import asn2pojo.runtime.serialization.NestedSequenceOfSerializer;
 import asn2pojo.runtime.types.Asn1Sequence;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_NodeAttributeSetXY;
+import asn2pojo.runtime.types.Asn1SequenceOf;
 
 /**
  * 
@@ -36,20 +30,12 @@ import j2735.REGION.Reg_NodeAttributeSetXY;
 public class NodeAttributeSetXY extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, optional = true)
-	@JacksonXmlElementWrapper(localName = "localNode")
-	@JacksonXmlProperty(localName = "NodeAttributeXY")
 	private NodeAttributeXYList localNode;
 	@Asn1Property(tag = 1, optional = true)
-	@JsonDeserialize(using = DisabledDeserializer.class)
-	@JsonSerialize(using = DisabledSerializer.class)
 	private SegmentAttributeXYList disabled;
 	@Asn1Property(tag = 2, optional = true)
-	@JsonDeserialize(using = EnabledDeserializer.class)
-	@JsonSerialize(using = EnabledSerializer.class)
 	private SegmentAttributeXYList enabled;
 	@Asn1Property(tag = 3, optional = true)
-	@JacksonXmlElementWrapper(localName = "data")
-	@JacksonXmlProperty(localName = "LaneDataAttribute")
 	private LaneDataAttributeList data;
 	@Asn1Property(tag = 4, optional = true)
 	private Offset_B10 dWidth;
@@ -109,7 +95,7 @@ public class NodeAttributeSetXY extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_NodeAttributeSetXY> {
 		SequenceOfRegional() {
-			super(Reg_NodeAttributeSetXY.class, 1L, 4L);
+			super(j2735.REGION.Reg_NodeAttributeSetXY.class, 1L, 4L);
 		}
 	}
 
@@ -123,29 +109,5 @@ public class NodeAttributeSetXY extends Asn1Sequence {
 
 	NodeAttributeSetXY() {
 		super(true);
-	}
-
-	public static class DisabledDeserializer extends NestedSequenceOfDeserializer<SegmentAttributeXYList> {
-		public DisabledDeserializer() {
-			super(SegmentAttributeXYList.class, "SegmentAttributeXY");
-		}
-	}
-
-	public static class DisabledSerializer extends NestedSequenceOfSerializer<SegmentAttributeXYList> {
-		public DisabledSerializer() {
-			super(SegmentAttributeXYList.class, "SegmentAttributeXY");
-		}
-	}
-
-	public static class EnabledDeserializer extends NestedSequenceOfDeserializer<SegmentAttributeXYList> {
-		public EnabledDeserializer() {
-			super(SegmentAttributeXYList.class, "SegmentAttributeXY");
-		}
-	}
-
-	public static class EnabledSerializer extends NestedSequenceOfSerializer<SegmentAttributeXYList> {
-		public EnabledSerializer() {
-			super(SegmentAttributeXYList.class, "SegmentAttributeXY");
-		}
 	}
 }

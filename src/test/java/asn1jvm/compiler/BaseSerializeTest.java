@@ -3,8 +3,11 @@ package asn1jvm.compiler;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
 
 public abstract class BaseSerializeTest<T> {
 
@@ -38,6 +41,17 @@ public abstract class BaseSerializeTest<T> {
         T object = jsonMapper.readValue(json, clazz);
         System.out.println(object.toString());
         return object;
+    }
+
+    public String loadResource(String path) {
+        String str;
+        try {
+            str = IOUtils.resourceToString(path, StandardCharsets.UTF_8);
+            System.out.printf("Loaded resource:%n%s%n", str);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return str;
     }
 
 }

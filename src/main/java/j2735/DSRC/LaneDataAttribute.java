@@ -1,17 +1,16 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Choice;
+import asn2pojo.runtime.annotations.Asn1Property;
+import j2735.REGION.Reg_LaneDataAttribute;
 import asn2pojo.runtime.types.Asn1SequenceOf;
+import java.util.Optional;
+import java.util.List;
 import asn2pojo.runtime.types.Asn1Type;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import j2735.REGION.Reg_LaneDataAttribute;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * 
@@ -105,7 +104,7 @@ public class LaneDataAttribute extends Asn1Choice {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_LaneDataAttribute> {
 		SequenceOfRegional() {
-			super(Reg_LaneDataAttribute.class, 1L, 4L);
+			super(j2735.REGION.Reg_LaneDataAttribute.class, 1L, 4L);
 		}
 	}
 

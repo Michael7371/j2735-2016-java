@@ -1,14 +1,17 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
-import asn2pojo.runtime.types.*;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import j2735.REGION.Reg_GeographicalPath;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Boolean;
+import asn2pojo.runtime.types.Asn1Choice;
 import java.util.List;
 import java.util.Optional;
+import asn2pojo.runtime.types.Asn1Type;
+import j2735.REGION.Reg_GeographicalPath;
+import asn2pojo.runtime.types.Asn1SequenceOf;
 
 /**
  * 
@@ -160,7 +163,7 @@ public class GeographicalPath extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_GeographicalPath> {
 		SequenceOfRegional() {
-			super(Reg_GeographicalPath.class, 1L, 4L);
+			super(j2735.REGION.Reg_GeographicalPath.class, 1L, 4L);
 		}
 	}
 

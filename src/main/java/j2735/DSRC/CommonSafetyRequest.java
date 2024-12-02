@@ -1,14 +1,12 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_CommonSafetyRequest;
+import asn2pojo.runtime.types.Asn1SequenceOf;
 
 /**
  * 
@@ -38,8 +36,6 @@ public class CommonSafetyRequest extends Asn1Sequence {
 	@Asn1Property(tag = 2, optional = true)
 	private TemporaryID id;
 	@Asn1Property(tag = 3)
-	@JacksonXmlElementWrapper(localName = "requests")
-	@JacksonXmlProperty(localName = "RequestedItem")
 	private RequestedItemList requests;
 	@Asn1Property(tag = 4, optional = true)
 	private SequenceOfRegional regional;
@@ -79,7 +75,7 @@ public class CommonSafetyRequest extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_CommonSafetyRequest> {
 		SequenceOfRegional() {
-			super(Reg_CommonSafetyRequest.class, 1L, 4L);
+			super(j2735.REGION.Reg_CommonSafetyRequest.class, 1L, 4L);
 		}
 	}
 

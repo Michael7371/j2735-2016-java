@@ -111,7 +111,7 @@ public class RoadSegment extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_RoadSegment> {
 		SequenceOfRegional() {
-			super(Reg_RoadSegment.class, 1L, 4L);
+			super(j2735.REGION.Reg_RoadSegment.class, 1L, 4L);
 		}
 	}
 

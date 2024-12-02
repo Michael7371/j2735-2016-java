@@ -1,12 +1,10 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import asn2pojo.runtime.annotations.Asn1Property;
 
 /**
  * 
@@ -32,8 +30,6 @@ public class RestrictionClassAssignment extends Asn1Sequence {
 	@Asn1Property(tag = 0)
 	private RestrictionClassID id;
 	@Asn1Property(tag = 1)
-	@JacksonXmlElementWrapper(localName = "users")
-	@JacksonXmlProperty(localName = "RestrictionUserType")
 	private RestrictionUserTypeList users;
 
 	public RestrictionClassID getId() {

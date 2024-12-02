@@ -2,6 +2,7 @@ package j2735.DSRC;
 
 import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import j2735.DSRC.PartII_Id;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -53,7 +54,7 @@ abstract public class PartIIcontent<TValue> extends Asn1Sequence {
 
 	public PartIIcontent(int id, String name) {
 		super(true);
-		var theId = new PartII_Id();
+		var theId = new j2735.DSRC.PartII_Id();
 		theId.setValue(id);
 		this.partII_Id = theId;
 		this.name = name;

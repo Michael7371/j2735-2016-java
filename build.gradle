@@ -13,6 +13,7 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    testImplementation 'commons-io:commons-io:2.18.0'
     implementation 'org.slf4j:slf4j-api:2.0.5'
     implementation 'org.slf4j:slf4j-simple:2.0.5'
     api 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.17.2'

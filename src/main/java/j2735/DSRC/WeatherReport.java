@@ -1,11 +1,15 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import j2735.NTCIP.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import j2735.NTCIP.EssPrecipYesNo;
+import asn2pojo.runtime.annotations.Asn1Property;
+import j2735.NTCIP.EssPrecipRate;
+import j2735.NTCIP.EssPrecipSituation;
+import j2735.NTCIP.EssSolarRadiation;
+import j2735.NTCIP.EssMobileFriction;
 
 /**
  * 

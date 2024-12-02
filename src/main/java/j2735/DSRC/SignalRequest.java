@@ -1,12 +1,12 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import asn2pojo.runtime.annotations.Asn1Property;
 import j2735.REGION.Reg_SignalRequest;
+import asn2pojo.runtime.types.Asn1SequenceOf;
 
 /**
  * 
@@ -85,7 +85,7 @@ public class SignalRequest extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_SignalRequest> {
 		SequenceOfRegional() {
-			super(Reg_SignalRequest.class, 1L, 4L);
+			super(j2735.REGION.Reg_SignalRequest.class, 1L, 4L);
 		}
 	}
 

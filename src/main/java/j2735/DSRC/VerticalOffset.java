@@ -1,14 +1,13 @@
 package j2735.DSRC;
 
-import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Choice;
+import asn2pojo.runtime.annotations.Asn1Property;
+import j2735.REGION.Reg_VerticalOffset;
+import java.util.Optional;
+import java.util.List;
 import asn2pojo.runtime.types.Asn1Type;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import j2735.REGION.Reg_VerticalOffset;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * 
