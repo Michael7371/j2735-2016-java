@@ -81,7 +81,7 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
         """;
 
     public static final String xml_speedLimits = """
-            <data>
+            <LaneDataAttributeList>
                 <speedLimits>
                     <RegulatorySpeedLimit>
                         <type>
@@ -114,6 +114,6 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
                         <speed>1987</speed>
                     </RegulatorySpeedLimit>
                 </speedLimits>
-            </data>
+            </LaneDataAttributeList>
             """;
 }
