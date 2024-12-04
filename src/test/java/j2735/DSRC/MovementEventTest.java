@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -51,7 +52,7 @@ public class MovementEventTest extends BaseSerializeTest<MovementEvent> {
     }
 
     private void test(MovementEvent me) {
-        assertThat(me.getEventState(), equalTo(MovementPhaseState.protected_Movement_Allowed));
+        assertThat(me.getEventState(), equalTo(MovementPhaseState.PROTECTED_MOVEMENT_ALLOWED));
         var timing = me.getTiming();
         assertThat(timing, notNullValue());
         assertThat(timing, hasProperty("startTime", equalTo(new TimeMark(22120L))));
@@ -63,9 +64,9 @@ public class MovementEventTest extends BaseSerializeTest<MovementEvent> {
         var speeds = me.getSpeeds();
         assertThat(speeds, hasSize(equalTo(2)));
         var firstSpeed = speeds.get(0);
-        testSpeed(firstSpeed, AdvisorySpeedType.transit, SpeedConfidence.prec1ms,250L,100L,1L);
+        testSpeed(firstSpeed, AdvisorySpeedType.TRANSIT, SpeedConfidence.PREC1MS,250L,100L,1L);
         var secondSpeed = speeds.get(1);
-        testSpeed(secondSpeed, AdvisorySpeedType.greenwave, SpeedConfidence.prec100ms,250L, 50L, 1L);
+        testSpeed(secondSpeed, AdvisorySpeedType.GREENWAVE, SpeedConfidence.PREC100MS,250L, 50L, 1L);
     }
 
     private void testSpeed(AdvisorySpeed speed, AdvisorySpeedType expectType, SpeedConfidence expectConfidence,
@@ -79,7 +80,7 @@ public class MovementEventTest extends BaseSerializeTest<MovementEvent> {
 
     public static MovementEvent createPojo() {
         var me = new MovementEvent();
-        var phaseState = MovementPhaseState.protected_Movement_Allowed;
+        var phaseState = MovementPhaseState.PROTECTED_MOVEMENT_ALLOWED;
         var timing = new TimeChangeDetails();
         var speeds = new AdvisorySpeedList();
         var speed1 = new AdvisorySpeed();
@@ -103,11 +104,11 @@ public class MovementEventTest extends BaseSerializeTest<MovementEvent> {
         timing.setLikelyTime(likelyTime);
         timing.setNextTime(nextTime);
 
-        speed1.setType(AdvisorySpeedType.transit);
+        speed1.setType(AdvisorySpeedType.TRANSIT);
         var speedAdvice1 = new SpeedAdvice();
         speedAdvice1.setValue((short)250);
         speed1.setSpeed(speedAdvice1);
-        speed1.setConfidence(SpeedConfidence.prec1ms);
+        speed1.setConfidence(SpeedConfidence.PREC1MS);
         var distance = new ZoneLength();
         distance.setValue((short)100);
         speed1.setDistance(distance);
@@ -115,11 +116,11 @@ public class MovementEventTest extends BaseSerializeTest<MovementEvent> {
         theClass1.setValue((short)1);
         speed1.setClass_(theClass1);
 
-        speed2.setType(AdvisorySpeedType.greenwave);
+        speed2.setType(AdvisorySpeedType.GREENWAVE);
         var speedAdvice2 = new SpeedAdvice();
         speedAdvice2.setValue((short)250);
         speed2.setSpeed(speedAdvice2);
-        speed2.setConfidence(SpeedConfidence.prec100ms);
+        speed2.setConfidence(SpeedConfidence.PREC100MS);
         var distance2 = new ZoneLength();
         distance2.setValue((short)50);
         speed2.setDistance(distance2);
@@ -176,33 +177,33 @@ public class MovementEventTest extends BaseSerializeTest<MovementEvent> {
             """;
 
     private static final String JSON =
-        """
-        {
-            "eventState": "protected-Movement-Allowed",
-            "timing": {
-                "startTime": 22120,
-                "minEndTime": 22120,
-                "maxEndTime": 22120,
-                "likelyTime": 22120,
-                "confidence": 14,
-                "nextTime": 22220
-            },
-            "speeds": [
-                {
-                    "type": "transit",
-                    "speed": 250,
-                    "confidence": "prec1ms",
-                    "distance": 100,
-                    "class": 1
+            """
+            {
+                "eventState": "protected-Movement-Allowed",
+                "timing": {
+                    "startTime": 22120,
+                    "minEndTime": 22120,
+                    "maxEndTime": 22120,
+                    "likelyTime": 22120,
+                    "confidence": 14,
+                    "nextTime": 22220
                 },
-                {
-                    "type": "greenwave",
-                    "speed": 250,
-                    "confidence": "prec100ms",
-                    "distance": 50,
-                    "class": 1
-                }
-            ]
-        }
-        """;
+                "speeds": [
+                    {
+                        "type": "transit",
+                        "speed": 250,
+                        "confidence": "prec1ms",
+                        "distance": 100,
+                        "class": 1
+                    },
+                    {
+                        "type": "greenwave",
+                        "speed": 250,
+                        "confidence": "prec100ms",
+                        "distance": 50,
+                        "class": 1
+                    }
+                ]
+            }
+            """;
 }
