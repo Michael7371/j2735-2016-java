@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+mkdir subset
+cp DegreesLat.java subset
+cp DegreesLong.java subset
+cp Elevation.java subset
+cp LaneDataAttribute_addGrpB.java subset
+cp LaneDataAttribute_addGrpBReg_LaneDataAttribute.java subset
+cp LaneDataAttribute_addGrpBReg_LaneDataAttributeValueDeserializer.java subset
+cp LaneDataAttribute_addGrpBReg_LaneDataAttributeValueSerializer.java subset
+cp LatitudeDMS.java subset
+cp LatitudeDMS2.java subset
+cp LongitudeDMS.java subset
+cp LongitudeDMS2.java subset
+cp MinutesAngle.java subset
+cp NodeOffsetPointXY_addGrpB.java subset
+cp NodeOffsetPointXY_addGrpBReg_NodeOffsetPointXY.java subset
+cp NodeOffsetPointXY_addGrpBReg_NodeOffsetPointXYValueDeserializer.java subset
+cp NodeOffsetPointXY_addGrpBReg_NodeOffsetPointXYValueSerializer.java subset
+cp Node_LLdms_48b.java subset
+cp Node_LLdms_80b.java subset
+cp Position3D_addGrpB.java subset
+cp Position3D_addGrpBReg_Position3D.java subset
+cp Position3D_addGrpBReg_Position3DValueDeserializer.java subset
+cp Position3D_addGrpBReg_Position3DValueSerializer.java subset
+cp SecondsAngle.java subset
+
