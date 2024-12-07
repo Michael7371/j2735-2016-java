@@ -1,5 +1,7 @@
 package us.dot.its.jpo.ode.plugin.j2735.DSRC;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import us.dot.its.jpo.ode.plugin.serialization.SequenceOfChoiceDeserializer;
 import us.dot.its.jpo.ode.plugin.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -29,9 +31,23 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  * 
  */
 @JsonInclude(Include.NON_NULL)
+@JsonDeserialize(using = LaneDataAttributeList.LaneDataAttributeListDeserializer.class)
 public class LaneDataAttributeList extends Asn1SequenceOf<LaneDataAttribute> {
 
 	LaneDataAttributeList() {
 		super(LaneDataAttribute.class, 1L, 8L);
+	}
+
+	public static class LaneDataAttributeListDeserializer
+		extends SequenceOfChoiceDeserializer<LaneDataAttribute, LaneDataAttributeList> {
+
+		protected LaneDataAttributeListDeserializer() {
+			super(LaneDataAttribute.class, LaneDataAttributeList.class);
+		}
+
+		@Override
+		protected LaneDataAttributeList construct() {
+			return new LaneDataAttributeList();
+		}
 	}
 }

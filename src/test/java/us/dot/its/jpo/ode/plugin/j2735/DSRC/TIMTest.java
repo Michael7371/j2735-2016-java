@@ -19,6 +19,9 @@ public class TIMTest extends BaseSerializeTest<TravelerInformation> {
     public void xmlDeserialize_generatedXml() throws IOException {
         TravelerInformation tim = fromXml(loadResource("/TravelerInformation.xml"));
         assertThat(tim, notNullValue());
+
+        String json = toJson(tim);
+        System.out.println(json);
     }
     
 

@@ -63,6 +63,25 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
         // TODO Inspect output for absence of <data> element.
     }
 
+    @Test
+    public void jsonSerialize() throws IOException {
+        NodeAttributeSetLL nasll = new NodeAttributeSetLL();
+        LaneDataAttributeList ldal = new LaneDataAttributeList();
+        LaneDataAttribute lda1 = new LaneDataAttribute();
+        lda1.setLaneAngle(new MergeDivergeNodeAngle(101L));
+        ldal.add(lda1);
+        LaneDataAttribute lda2 = new LaneDataAttribute();
+        lda2.setPathEndPointAngle(new DeltaAngle(-8L));
+        ldal.add(lda2);
+        LaneDataAttribute lda3 = new LaneDataAttribute();
+        lda3.setLaneCrownPointRight(new RoadwayCrownAngle(-87L));
+        ldal.add(lda3);
+        nasll.setData(ldal);
+        String json = toJson(nasll);
+        System.out.println(json);
+        assertThat(json, notNullValue());
+    }
+
     public static final String xml = """
         <NodeAttributeSetLL>
             <localNode>

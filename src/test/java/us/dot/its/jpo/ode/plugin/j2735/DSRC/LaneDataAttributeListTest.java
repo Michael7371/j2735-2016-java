@@ -25,21 +25,22 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
         super(LaneDataAttributeList.class);
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void xmlDeserialize() throws IOException {
         LaneDataAttributeList obj = fromXml(xml);
         assertThat(obj, notNullValue());
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void xmlDeserialize_SpeedLimits() throws IOException {
         LaneDataAttributeList obj = fromXml(xml_speedLimits);
         assertThat(obj, notNullValue());
+        assertThat(obj, hasSize(1));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void xmlDeserialize_LaneAngle() throws IOException {
         LaneDataAttributeList obj = fromXml(xml_laneAngle);
@@ -48,7 +49,7 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
         assertThat(obj.get(0).getLaneAngle(), notNullValue());
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void xmlSerialize() throws IOException {
         LaneDataAttributeList ldal = new LaneDataAttributeList();
@@ -60,6 +61,19 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
         ldal.add(lda2);
         String xml = toXml(ldal);
         assertThat(xml, notNullValue());
+    }
+
+    @Test
+    public void jsonSerialize() throws IOException {
+        LaneDataAttributeList ldal = new LaneDataAttributeList();
+        LaneDataAttribute lda1 = new LaneDataAttribute();
+        lda1.setLaneAngle(new MergeDivergeNodeAngle(101L));
+        ldal.add(lda1);
+        LaneDataAttribute lda2 = new LaneDataAttribute();
+        lda2.setPathEndPointAngle(new DeltaAngle(-8L));
+        ldal.add(lda2);
+        String json = toJson(ldal);
+        assertThat(json, notNullValue());
     }
 
     public static final String xml_laneAngle = """
@@ -88,6 +102,7 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
             <pathEndPointAngle>-8</pathEndPointAngle>
             <laneAngle>62</laneAngle>
             <laneCrownPointLeft>35</laneCrownPointLeft>
+            <beginAndEnd/>
         </LaneDataAttributeList>
         """;
 

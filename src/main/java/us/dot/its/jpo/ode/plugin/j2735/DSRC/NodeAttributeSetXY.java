@@ -52,7 +52,7 @@ public class NodeAttributeSetXY extends Asn1Sequence {
 	@JsonDeserialize(using = SegmentAttributeXYList.SegmentAttributeXYListDeserializer.class)
 	private SegmentAttributeXYList enabled;
 	@Asn1Property(tag = 3, optional = true)
-	@JacksonXmlElementWrapper(useWrapping = false)
+	//@JacksonXmlElementWrapper(useWrapping = false)
 	private LaneDataAttributeList data;
 	@Asn1Property(tag = 4, optional = true)
 	@JsonDeserialize(using = Offset_B10.Offset_B10Deserializer.class)
