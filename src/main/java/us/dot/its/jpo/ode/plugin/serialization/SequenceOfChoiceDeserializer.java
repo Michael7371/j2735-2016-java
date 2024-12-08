@@ -6,8 +6,13 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
+import lombok.SneakyThrows;
 import us.dot.its.jpo.ode.plugin.types.Asn1Choice;
 import us.dot.its.jpo.ode.plugin.types.Asn1SequenceOf;
 import us.dot.its.jpo.ode.plugin.utils.XmlUtils;
@@ -41,20 +46,31 @@ public abstract class SequenceOfChoiceDeserializer<S extends Asn1Choice, T exten
         this.sequenceOfClass = sequenceOfClass;
     }
 
+    @SneakyThrows
     @Override
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
             throws IOException, JacksonException {
         T result = construct();
         if (jsonParser instanceof FromXmlParser xmlParser) {
-           // result = xmlParser.getCodec().readValue(jsonParser, sequenceOfClass);
-            System.out.println("Hello from SEQUENCE-OF CHOICE xml deserializer");
-            result = jsonParser.getCodec().readValue(jsonParser, sequenceOfClass);
-
+            // XML: expects unwrapped choice items
+            // unwrap and deserialize each choice item
+            XmlMapper xmlMapper = (XmlMapper)xmlParser.getCodec();
+            TreeNode node = xmlMapper.readTree(xmlParser);
+            String xml = xmlMapper.writeValueAsString(node);
+            var tokens = tokenize(xml);
+            var unwrapped = unwrap(tokens);
+            var grouped = groupTopLevelTokens(unwrapped);
+            for (var group : grouped) {
+                var wrappedGroup = wrap(group, choiceClass.getSimpleName());
+                S choice = xmlMapper.readValue(stringifyTokens(wrappedGroup), choiceClass);
+                result.add(choice);
+            }
         } else {
-            // JSON: expects wrapped choice items
-            System.out.println("Hello from SEQUENCE-OF CHOICE json deserializer");
+            // JSON: expects wrapped choice items, pass through as normal
             result = jsonParser.getCodec().readValue(jsonParser, sequenceOfClass);
         }
         return result;
     }
+
+
 }

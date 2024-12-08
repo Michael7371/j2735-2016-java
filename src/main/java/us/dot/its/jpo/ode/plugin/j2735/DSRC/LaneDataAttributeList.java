@@ -1,6 +1,7 @@
 package us.dot.its.jpo.ode.plugin.j2735.DSRC;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import us.dot.its.jpo.ode.plugin.serialization.SequenceOfChoiceDeserializer;
 import us.dot.its.jpo.ode.plugin.serialization.SequenceOfChoiceSerializer;
 import us.dot.its.jpo.ode.plugin.types.Asn1SequenceOf;

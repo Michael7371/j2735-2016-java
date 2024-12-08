@@ -8,9 +8,7 @@ import com.fasterxml.jackson.dataformat.xml.ser.XmlSerializerProvider;
 import lombok.SneakyThrows;
 import us.dot.its.jpo.ode.plugin.types.Asn1Choice;
 import us.dot.its.jpo.ode.plugin.types.Asn1SequenceOf;
-import us.dot.its.jpo.ode.plugin.utils.XmlUtils;
 
-import javax.xml.stream.XMLStreamWriter;
 import java.io.IOException;
 
 import static us.dot.its.jpo.ode.plugin.utils.XmlUtils.*;
@@ -36,7 +34,6 @@ public class SequenceOfChoiceSerializer<S extends Asn1Choice, T extends Asn1Sequ
     @SneakyThrows
     @Override
     public void serialize(T sequenceOf, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        System.out.println("Hello from the SEQUENCE-OF CHOICE serializer");
         if (serializerProvider instanceof XmlSerializerProvider xmlProvider) {
             // XER: Choice items not wrapped
             var xmlGen = (ToXmlGenerator)jsonGenerator;
@@ -53,4 +50,6 @@ public class SequenceOfChoiceSerializer<S extends Asn1Choice, T extends Asn1Sequ
             jsonGenerator.writeObject(sequenceOf);
         }
     }
+
+
 }

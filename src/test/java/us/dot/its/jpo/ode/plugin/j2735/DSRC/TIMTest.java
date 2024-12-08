@@ -23,6 +23,8 @@ public class TIMTest extends BaseSerializeTest<TravelerInformation> {
         String json = toJson(tim);
         System.out.println(json);
     }
+
+
     
 
     @Test

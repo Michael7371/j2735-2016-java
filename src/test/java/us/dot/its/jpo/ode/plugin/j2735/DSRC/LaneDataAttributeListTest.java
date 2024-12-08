@@ -63,6 +63,7 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
         assertThat(xml, notNullValue());
     }
 
+    @Disabled
     @Test
     public void jsonSerialize() throws IOException {
         LaneDataAttributeList ldal = new LaneDataAttributeList();

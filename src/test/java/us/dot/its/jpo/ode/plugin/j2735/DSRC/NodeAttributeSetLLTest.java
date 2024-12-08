@@ -52,7 +52,7 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
         var item1 = data.get(0);
         assertThat(item1.getLaneCrownPointRight(), equalTo(new RoadwayCrownAngle(-87)));
         var item2 = data.get(1);
-        assertThat(item2.getLaneAngle(), equalTo(new RoadwayCrownAngle(-167)));
+        assertThat(item2.getLaneAngle(), equalTo(new MergeDivergeNodeAngle(-167)));
     }
 
     @Test

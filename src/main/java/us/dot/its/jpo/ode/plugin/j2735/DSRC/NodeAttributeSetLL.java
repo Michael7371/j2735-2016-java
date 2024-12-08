@@ -55,7 +55,6 @@ public class NodeAttributeSetLL extends Asn1Sequence {
 	@JsonDeserialize(using = SegmentAttributeLLList.SegmentAttributeLLListDeserializer.class)
 	private SegmentAttributeLLList enabled;
 	@Asn1Property(tag = 3, optional = true)
-	//@JacksonXmlElementWrapper(useWrapping = false)
 	@JsonDeserialize(using = LaneDataAttributeList.LaneDataAttributeListDeserializer.class)
 	@JsonSerialize(using = LaneDataAttributeList.LaneDataAttributeListSerializer.class)
 	private LaneDataAttributeList data;

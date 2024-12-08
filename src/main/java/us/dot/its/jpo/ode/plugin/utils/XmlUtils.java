@@ -44,6 +44,7 @@ public class XmlUtils {
     public static List<XmlToken> readTokens(XMLStreamReader xmlReader, String endElement) {
         var tokens = new ArrayList<XmlToken>();
         addToken(xmlReader, tokens);
+
         while (xmlReader.hasNext()) {
             xmlReader.next();
             XmlToken token = addToken(xmlReader, tokens);
