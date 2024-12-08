@@ -1,6 +1,7 @@
 package us.dot.its.jpo.ode.plugin.j2735.DSRC;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import us.dot.its.jpo.ode.plugin.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -54,8 +55,9 @@ public class NodeAttributeSetLL extends Asn1Sequence {
 	@JsonDeserialize(using = SegmentAttributeLLList.SegmentAttributeLLListDeserializer.class)
 	private SegmentAttributeLLList enabled;
 	@Asn1Property(tag = 3, optional = true)
-//	@JacksonXmlElementWrapper(useWrapping = false)
-//	@JacksonXmlProperty(localName = "data")
+	//@JacksonXmlElementWrapper(useWrapping = false)
+	@JsonDeserialize(using = LaneDataAttributeList.LaneDataAttributeListDeserializer.class)
+	@JsonSerialize(using = LaneDataAttributeList.LaneDataAttributeListSerializer.class)
 	private LaneDataAttributeList data;
 	@Asn1Property(tag = 4, optional = true)
 	@JsonDeserialize(using = Offset_B10.Offset_B10Deserializer.class)

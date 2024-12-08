@@ -19,6 +19,8 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
     public void xmlDeserialize() throws IOException {
         NodeAttributeSetLL obj = fromXml(xml);
         assertThat(obj, notNullValue());
+        var data = obj.getData();
+        assertThat(data, allOf(notNullValue(), hasSize(greaterThan(0))));
     }
 
     @Test
@@ -44,7 +46,13 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
     public void xmlDeserialize_laneAttributeIntData() throws IOException {
         NodeAttributeSetLL obj = fromXml(xml_laneAttributeIntData);
         assertThat(obj, notNullValue());
-        // TODO Inspect that all data items are present
+        LaneDataAttributeList data = obj.getData();
+        assertThat(data, notNullValue());
+        assertThat(data, hasSize(2));
+        var item1 = data.get(0);
+        assertThat(item1.getLaneCrownPointRight(), equalTo(new RoadwayCrownAngle(-87)));
+        var item2 = data.get(1);
+        assertThat(item2.getLaneAngle(), equalTo(new RoadwayCrownAngle(-167)));
     }
 
     @Test
@@ -60,7 +68,12 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
         nasll.setData(ldal);
         String xml = toXml(nasll);
         assertThat(xml, notNullValue());
-        // TODO Inspect output for absence of <data> element.
+        assertThat("Should not have more than one data element",
+                xml, not(containsString("</data><data>")));
+        assertThat("Should not have nested data elements",
+                xml, not(containsString("<data><data>")));
+        assertThat("Choice items should not be wrapped with class name",
+                xml, not(containsString("<LaneDataAttribute>")));
     }
 
     @Test
@@ -80,7 +93,62 @@ public class NodeAttributeSetLLTest extends BaseSerializeTest<NodeAttributeSetLL
         String json = toJson(nasll);
         System.out.println(json);
         assertThat(json, notNullValue());
+        assertThat(json, equalTo(json_laneAttributeIntData));
     }
+
+    @Test
+    public void jsonDeserialize_laneAttributeIntData() throws IOException {
+        NodeAttributeSetLL nasll = fromJson(json_laneAttributeIntData);
+        assertThat(nasll, notNullValue());
+        var data = nasll.getData();
+        assertThat(data, allOf(notNullValue(), hasSize(3)));
+        var item1 = data.get(0);
+        assertThat(item1.getLaneAngle(), equalTo(new MergeDivergeNodeAngle(101)));
+        var item2 = data.get(1);
+        assertThat(item2.getPathEndPointAngle(), equalTo(new DeltaAngle(-8)));
+        var item3 = data.get(2);
+        assertThat(item3.getLaneCrownPointRight(), equalTo(new RoadwayCrownAngle(-87)));
+    }
+
+    @Test
+    public void jsonDeserialize_laneAttributeData() throws IOException {
+        NodeAttributeSetLL nasll = fromJson(json);
+        assertThat(nasll, notNullValue());
+    }
+
+    public static final String json = """
+            {
+                "data": [
+                    {
+                        "laneAngle": 101
+                    },
+                    {
+                        "speedLimits": [
+                            {
+                                "type": "truckMaxSpeed",
+                                "speed": 5822
+                            },
+                            {
+                                "type": "truckNightMaxSpeed",
+                                "speed": 3017
+                            }
+                        ]
+                    },
+                    {
+                        "pathEndPointAngle": -8
+                    },
+                    {
+                        "laneAngle": 62
+                    },
+                    {
+                        "laneCrownPointLeft": 35
+                    }
+                ]
+            }
+            """;
+
+    public static final String json_laneAttributeIntData = """
+            {"data":[{"laneAngle":101},{"pathEndPointAngle":-8},{"laneCrownPointRight":-87}]}""";
 
     public static final String xml = """
         <NodeAttributeSetLL>

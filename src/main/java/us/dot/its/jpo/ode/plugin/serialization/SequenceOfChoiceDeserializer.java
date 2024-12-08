@@ -2,6 +2,8 @@ package us.dot.its.jpo.ode.plugin.serialization;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
@@ -44,42 +46,13 @@ public abstract class SequenceOfChoiceDeserializer<S extends Asn1Choice, T exten
             throws IOException, JacksonException {
         T result = construct();
         if (jsonParser instanceof FromXmlParser xmlParser) {
-            // XML: expects unwrapped choice items
-            String parentName = null;
-            if (xmlParser.getParsingContext().getParent() != null) {
-                parentName = xmlParser.getParsingContext().getParent().getCurrentName();
-            }
-            XMLStreamReader xmlReader = xmlParser.getStaxReader();
+           // result = xmlParser.getCodec().readValue(jsonParser, sequenceOfClass);
+            System.out.println("Hello from SEQUENCE-OF CHOICE xml deserializer");
+            result = jsonParser.getCodec().readValue(jsonParser, sequenceOfClass);
 
-            // Read the xml into a list
-            List<XmlUtils.XmlToken> xmlTokens = null;
-            try {
-                if (parentName == null) {
-                    xmlTokens = XmlUtils.readTokens(xmlReader);
-                    System.out.println(stringifyTokens(xmlTokens));
-                    xmlTokens = unwrap(xmlTokens);
-                    System.out.println(stringifyTokens(xmlTokens));
-                } else {
-                    xmlTokens = XmlUtils.readTokens(xmlReader, parentName);
-                    System.out.println(stringifyTokens(xmlTokens));
-                }
-            } catch (XMLStreamException e) {
-                throw new IOException("Exception reading xml", e);
-            }
-
-
-            // Group by top level
-            List<List<XmlUtils.XmlToken>> xmlGroups = groupTopLevelTokens(xmlTokens);
-            // Deserialize the xml for each choice
-            for (var group : xmlGroups) {
-                String choiceXml = stringifyTokens(wrap(group, choiceClass.getSimpleName()));
-                System.out.println(choiceXml);
-                S choice =SerializationUtil.xmlMapper().readValue(choiceXml, choiceClass);
-                result.add(choice);
-            }
         } else {
             // JSON: expects wrapped choice items
-            // Pass through normally
+            System.out.println("Hello from SEQUENCE-OF CHOICE json deserializer");
             result = jsonParser.getCodec().readValue(jsonParser, sequenceOfClass);
         }
         return result;

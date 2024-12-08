@@ -2,10 +2,13 @@ package us.dot.its.jpo.ode.plugin.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.SneakyThrows;
 
 import javax.xml.namespace.QName;
+import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
@@ -13,6 +16,13 @@ import java.util.Objects;
 
 
 public class XmlUtils {
+
+    @SneakyThrows
+    public static List<XmlToken> tokenize(String xml) {
+        var factory = XMLInputFactory.newInstance();
+        XMLStreamReader reader = factory.createXMLStreamReader(new StringReader(xml));
+        return readTokens(reader);
+    }
 
     public static List<XmlToken> readTokens(XMLStreamReader xmlReader) throws XMLStreamException {
         var tokens = new ArrayList<XmlToken>();
@@ -30,7 +40,8 @@ public class XmlUtils {
         return mergeEmptyElements(tokens);
     }
 
-    public static List<XmlToken> readTokens(XMLStreamReader xmlReader, String endElement) throws XMLStreamException {
+    @SneakyThrows
+    public static List<XmlToken> readTokens(XMLStreamReader xmlReader, String endElement) {
         var tokens = new ArrayList<XmlToken>();
         addToken(xmlReader, tokens);
         while (xmlReader.hasNext()) {

@@ -25,14 +25,14 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
         super(LaneDataAttributeList.class);
     }
 
-    //@Disabled
+    @Disabled
     @Test
     public void xmlDeserialize() throws IOException {
         LaneDataAttributeList obj = fromXml(xml);
         assertThat(obj, notNullValue());
     }
 
-    //@Disabled
+    @Disabled
     @Test
     public void xmlDeserialize_SpeedLimits() throws IOException {
         LaneDataAttributeList obj = fromXml(xml_speedLimits);
@@ -40,7 +40,7 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
         assertThat(obj, hasSize(1));
     }
 
-    //@Disabled
+    @Disabled
     @Test
     public void xmlDeserialize_LaneAngle() throws IOException {
         LaneDataAttributeList obj = fromXml(xml_laneAngle);
@@ -49,7 +49,7 @@ public class LaneDataAttributeListTest extends BaseSerializeTest<LaneDataAttribu
         assertThat(obj.get(0).getLaneAngle(), notNullValue());
     }
 
-    //@Disabled
+    @Disabled
     @Test
     public void xmlSerialize() throws IOException {
         LaneDataAttributeList ldal = new LaneDataAttributeList();
