@@ -13,6 +13,8 @@ import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
 
 import java.io.IOException;
 
+import static us.dot.its.jpo.ode.plugin.utils.XmlUtils.*;
+
 /**
  * See description in {@link OpenTypeSerializer}
  * @author Ivan Yourshaw
@@ -32,21 +34,15 @@ public abstract class OpenTypeDeserializer<T extends Asn1Type> extends StdDeseri
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
         T result = null;
         if (jsonParser instanceof FromXmlParser xmlParser) {
+            // XML: Unwrap
             XmlMapper xmlMapper = (XmlMapper)xmlParser.getCodec();
             TreeNode node = xmlParser.getCodec().readTree(xmlParser);
-            if (node instanceof ObjectNode objectNode) {
-                JsonNode unwrapped = objectNode.findValue(wrapped);
-
-                // HACK: serialization annotations are ignored here.
-                // ideally we would like to just unwrap the original literal xml and pass it through
-                // but Jackson's XML parser insists on converting everything to JSON, so the original XML is
-                // not preserved.  Specifically, empty elements like <true/> are expanded to <true></true>,
-                // but the boolean and enumerated deserializers can still handle this.
-                String unwrappedXml = xmlMapper.writeValueAsString(unwrapped);
-
-                result = xmlMapper.readValue(unwrappedXml, thisClass);
-            }
+            String xml = xmlMapper.writeValueAsString(node);
+            var tokens = tokenize(xml);
+            var unwrapped = unwrap(tokens);
+            result = xmlMapper.readValue(stringifyTokens(unwrapped), thisClass);
         } else {
+            // JSON: pass through
             result = jsonParser.getCodec().readValue(jsonParser, thisClass);
         }
         return result;
