@@ -1,11 +1,9 @@
 package us.dot.its.jpo.ode.plugin.j2735.DSRC;
 
 import us.dot.its.jpo.ode.plugin.BaseSerializeTest;
-import us.dot.its.jpo.ode.plugin.j2735.DSRC.DSRCmsgID;
-import us.dot.its.jpo.ode.plugin.j2735.DSRC.TravelerInformationMessageFrame;
-import us.dot.its.jpo.ode.plugin.j2735.ITIS.ITIScodes;
-import us.dot.its.jpo.ode.plugin.j2735.ITIS.ITIScodesAndText;
-import us.dot.its.jpo.ode.plugin.j2735.ITIS.ITIScodesAndTextSequence;
+import us.dot.its.jpo.ode.plugin.j2735.itis.ITIScodes;
+import us.dot.its.jpo.ode.plugin.j2735.itis.ITIScodesAndText;
+import us.dot.its.jpo.ode.plugin.j2735.itis.ITIScodesAndTextSequence;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
