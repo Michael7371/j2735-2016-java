@@ -1,5 +1,7 @@
 package us.dot.its.jpo.ode.plugin.types;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import us.dot.its.jpo.ode.plugin.serialization.BitstringSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -11,6 +13,7 @@ import static us.dot.its.jpo.ode.plugin.utils.BitUtils.reverseBits;
 @JsonSerialize(using = BitstringSerializer.class)
 public abstract class Asn1Bitstring implements Asn1Type {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     final BitSet bits;
     final int size;
     final boolean hasExtensionMarker;
@@ -68,20 +71,18 @@ public abstract class Asn1Bitstring implements Asn1Type {
     }
 
     public void fromHexString(String str) {
-        System.out.println(str);
         if (str == null) {
             bits.clear();
             return;
         }
         HexFormat hex = HexFormat.of();
         byte[] bytes = reverseBits(hex.parseHex(str));
-        System.out.println(bytes.length);
+        logger.debug("reversed bytes: {}", bytes);
         BitSet newBits = BitSet.valueOf(bytes);
-        System.out.println(newBits);
-
+        logger.debug("newBits: {}", newBits);
         bits.clear();
         bits.or(newBits);
-        System.out.println(binaryString());
+        logger.debug("binaryString: {}", binaryString());
     }
 
     public String name(int index) {
